@@ -23,6 +23,8 @@ namespace WPFMaster
         public MainWindow()
         {
             InitializeComponent();
+            new Configuration();
+            Main.Initialize();
         }
     }
 }

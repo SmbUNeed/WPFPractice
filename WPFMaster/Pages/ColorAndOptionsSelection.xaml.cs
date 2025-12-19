@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace WPFMaster.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Page1.xaml
+    /// Логика взаимодействия для ColorAndOptionsSelection.xaml
     /// </summary>
-    public partial class Page1 : Page
+    public partial class ColorAndOptionsSelection : Page
     {
-        public Page1()
+        public ColorAndOptionsSelection()
         {
             InitializeComponent();
         }

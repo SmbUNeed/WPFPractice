@@ -1,0 +1,44 @@
+﻿<Page x:Class="WPFMaster.Pages.ModelAndEngineSelection"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WPFMaster.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ModelAndEngineSelection">
+
+    <Grid x:Name="G1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="ModelList" Grid.Row="1" Grid.Column="0" SelectionMode="Single" SelectionChanged="ModelList_Selection">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        <ListBox x:Name="EngineList" Grid.Row="1" Grid.Column="1" SelectionMode="Single" SelectionChanged="EngineList_Selection">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <TextBox x:Name="ModelText" Grid.Row="2" Grid.Column="0"/>
+        <TextBox x:Name="EngineText" Grid.Row="2" Grid.Column="1"/>
+        <TextBlock x:Name="SumBox" Text="Итого:" FontSize="30" Padding="25" Background="WhiteSmoke"/>
+        <Button x:Name="SaveME" Grid.Column="1" Click="SaveButtonClick" Content="Сохранить" HorizontalAlignment="Right" Width="200" Height="70" VerticalAlignment="Top" Margin="10"/>
+    </Grid>
+</Page>

@@ -63,27 +63,42 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Scripst\Main.cs" />
+    <Compile Include="Pages\ColorAndOptionsSelection.xaml.cs">
+      <DependentUpon>ColorAndOptionsSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ContactInformationInput.xaml.cs">
+      <DependentUpon>ContactInformationInput.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainMenuPage.xaml.cs">
+      <DependentUpon>MainMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ModelAndEngineSelection.xaml.cs">
+      <DependentUpon>ModelAndEngineSelection.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scripst\Configuration.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\MainPage.xaml">
+    <Page Include="Pages\ColorAndOptionsSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\Page1.xaml">
+    <Page Include="Pages\ContactInformationInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ModelAndEngineSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pages\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

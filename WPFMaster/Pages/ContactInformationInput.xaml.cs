@@ -16,13 +16,18 @@ using System.Windows.Shapes;
 namespace WPFMaster.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
+    /// Логика взаимодействия для ContactInformationInput.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class ContactInformationInput : Page
     {
-        public MainPage()
+        public ContactInformationInput()
         {
             InitializeComponent();
+        }
+        private void SaveButtonClick(object sender, RoutedEventArgs e)
+        {
+            Configuration.Instance.SetContactInformation(new string[] { NameBox.Text, EmailBox.Text, PhoneBox.Text, AdressBox.Text });
+            NavigationService.Navigate(new MainMenuPage());
         }
     }
 }

@@ -7,8 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800" >
     <Grid>
-        <Frame x:Name="MainFrame" Grid.Row="1" Source="Pages/MainPage.xaml">
-            
-        </Frame>
+        <Frame x:Name="MainFrame" Grid.Row="1" Source="Pages/MainMenuPage.xaml" NavigationUIVisibility="Visible"/>
     </Grid>
 </Window>
