@@ -19,10 +19,21 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        
-        <Button x:Name="SelectModel" Grid.Row="2" Grid.Column="0" Content="Модель и тип двигателя" FontSize="20" Click="ModelSelection"></Button>
-        <Button x:Name="SelectColorAndOptions" Grid.Row="2" Grid.Column="1" Content="Цвет и доп. опции" FontSize="20" Click="NewColorAndOptions"></Button>
-        <Button x:Name="ContactsButton" Grid.Row="2" Grid.Column="2" Content="Оформить заказ" FontSize="20" Click="NewContactInformation"></Button>
+        <TextBlock Text="Модель и двигатель" Grid.Column="0"/>
+        <TextBlock Text="Цвет и доп. опции" Grid.Column="1"/>
+        <TextBlock Text="Контактные данные" Grid.Column="2"/>
+        <TextBlock Text="Расчет кредита" Grid.Column="3"/>
+
+        <TextBlock x:Name="ME_TxtB" Text="" Grid.Column="0" Grid.Row="1"/>
+        <TextBlock x:Name="CO_TxtB" Text="" Grid.Column="1" Grid.Row="1"/>
+        <TextBlock x:Name="CI_TxtB" Text="" Grid.Column="2" Grid.Row="1"/>
+        <TextBlock x:Name="CC_TxtB" Text="" Grid.Column="3" Grid.Row="1"/>
+
+        <Button x:Name="SelectModel" Grid.Row="2" Grid.Column="0" Content="Выбрать" FontSize="20" Click="ModelSelection"/>
+        <Button x:Name="SelectColorAndOptions" Grid.Row="2" Grid.Column="1" Content="Выбрать" FontSize="20" Click="NewColorAndOptions"/>
+        <Button x:Name="ContactsButton" Grid.Row="2" Grid.Column="2" Content="Заполнить" FontSize="20" Click="NewContactInformation"/>
+        <Button x:Name="CreditButton" Grid.Row="2" Grid.Column="3" Content="Рассчитать" FontSize="20" Click="CreditCalculation"/>
     </Grid>
 </Page>

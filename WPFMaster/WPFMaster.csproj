@@ -63,6 +63,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Pages\CreditCalculation.xaml.cs">
+      <DependentUpon>CreditCalculation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scripst\Main.cs" />
     <Compile Include="Pages\ColorAndOptionsSelection.xaml.cs">
       <DependentUpon>ColorAndOptionsSelection.xaml</DependentUpon>
@@ -86,6 +89,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ContactInformationInput.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\CreditCalculation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

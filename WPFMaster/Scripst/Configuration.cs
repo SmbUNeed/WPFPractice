@@ -77,7 +77,19 @@ namespace WPFMaster
                 ContactInformation[key] = arr[(int)key];
             }
         }
-
+        public string[] GetContactsInfo()
+        {
+            if (CheckContactIfFull()) return ContactInformation.Values.ToArray();
+            return new string[]{};
+        }
+        public bool CheckContactIfFull()
+        {
+            foreach (ContactTypes key in ContactInformation.Keys.ToList())
+            {
+                if (ContactInformation[key] == null) return false;
+            }
+            return true;
+        }
         public void SetCarColor(Color color) => BodyColor = color;
         public void SetModel(string model) => Model = model;
         public void SetEngineType(string engineType) => EngineType = engineType;

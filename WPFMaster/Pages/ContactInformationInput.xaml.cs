@@ -23,6 +23,15 @@ namespace WPFMaster.Pages
         public ContactInformationInput()
         {
             InitializeComponent();
+            TextBox[] _textBoxes = new TextBox[] { NameBox, EmailBox, PhoneBox, AdressBox }; 
+            if (Configuration.Instance.CheckContactIfFull())
+            {
+                string[] arr = Configuration.Instance.GetContactsInfo();
+                for (int i = 0; i < _textBoxes.Length; i++)
+                {
+                    _textBoxes[i].Text = arr[i];
+                }
+            }
         }
         private void SaveButtonClick(object sender, RoutedEventArgs e)
         {
