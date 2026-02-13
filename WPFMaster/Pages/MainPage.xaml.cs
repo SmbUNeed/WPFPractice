@@ -20,22 +20,50 @@ namespace WPFMaster.Pages
     /// </summary>
     public partial class MainPage : Page
     {
+        List<Films> FilmsList = new List<Films>();
         public MainPage()
         {
             InitializeComponent();
-            FilmsListBox.ItemsSource = Core.Context.Films.OrderBy(f => f.Name).ToList();
+            FilmsList = Core.Context.Films.OrderBy(f => f.Name).ToList();
+            FilmsListBox.ItemsSource = FilmsList;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if ((sender as ComboBox) == null) return;
-            switch ((sender as ComboBox).SelectedIndex)
+            UpdateFilms();
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateFilms();
+        }
+
+        private void UpdateFilms()
+        {
+            if (FilmsListBox == null) return;
+            FilmsList = Core.Context.Films.ToList();
+            SearchFilms();
+            OrderFilms();
+            FilmsListBox.ItemsSource = FilmsList;
+        }
+
+        private void SearchFilms()
+        {
+            if (SearchBox != null && SearchBox?.Text != "")
+            {
+                FilmsList = FilmsList.Where(f => f.Name.ToLower().Contains(SearchBox.Text.ToLower())).ToList();
+            }
+        }
+
+        private void OrderFilms()
+        {
+            switch(OrderComboBox.SelectedIndex)
             {
                 case 0:
-                    FilmsListBox.ItemsSource = Core.Context.Films.OrderBy(f => f.Name).ToList();
+                    FilmsList = FilmsList.OrderBy(f => f.Name).ToList();
                     break;
                 case 1:
-                    FilmsListBox.ItemsSource = Core.Context.Films.OrderBy(f => f.RateFilm).ToList();
+                    FilmsList = FilmsList.OrderByDescending(f => f.RateFilm).ToList();
                     break;
             }
         }

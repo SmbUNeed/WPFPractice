@@ -18,14 +18,13 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Сортировать по:" FontSize="10" Foreground="Gray" VerticalAlignment="Center" Margin="5"/>
-                    <ComboBox Width="100" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBox x:Name="OrderComboBox" Width="100" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">
                         <ComboBoxItem Content="Название"/>
                         <ComboBoxItem Content="Рейтинг"/>
                     </ComboBox>
                 </StackPanel>
                 
-                <TextBox x:Name="SearchBox" ToolTip="Поиск по названию" Width="300"/>
-                <Button Content="Найти" Width="80"/>
+                <TextBox x:Name="SearchBox" ToolTip="Поиск по названию" Width="300" TextChanged="SearchBox_TextChanged"/>
             </StackPanel>
         </StackPanel>
         
