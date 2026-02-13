@@ -13,8 +13,11 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Button Width="40" Height="40" HorizontalAlignment="Left" Margin="10" Click="Button_Click" Background="Transparent" BorderBrush="Transparent" Focusable="False" Cursor="Hand">
+            <Image Source="/Images/profile.png"/>
+        </Button>
         <StackPanel>
-            <TextBlock Text="Absolute Cinema" Height="40" TextAlignment="Center" FontSize="30"/>
+            <TextBlock Text="Absolute Cinema" Height="40" Width="300" TextAlignment="Center" FontSize="30"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Сортировать по:" FontSize="10" Foreground="Gray" VerticalAlignment="Center" Margin="5"/>
@@ -27,6 +30,7 @@
                 <TextBox x:Name="SearchBox" ToolTip="Поиск по названию" Width="300" TextChanged="SearchBox_TextChanged"/>
             </StackPanel>
         </StackPanel>
+        
         
         <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="FilmsListBox">
             <ListBox.ItemTemplate>

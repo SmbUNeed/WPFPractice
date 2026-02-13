@@ -67,5 +67,14 @@ namespace WPFMaster.Pages
                     break;
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Session.Instance.CurrentUser != null)
+            {
+                NavigationService.Navigate(new UserPage());
+            }
+            else NavigationService.Navigate(new SignInPage());
+        }
     }
 }

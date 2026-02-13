@@ -81,6 +81,15 @@
     <Compile Include="Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\SignInPage.xaml.cs">
+      <DependentUpon>SignInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SignUpPage.xaml.cs">
+      <DependentUpon>SignUpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserPage.xaml.cs">
+      <DependentUpon>UserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Places.cs">
       <DependentUpon>Cinema.tt</DependentUpon>
     </Compile>
@@ -90,6 +99,7 @@
     <Compile Include="RateHall.cs">
       <DependentUpon>Cinema.tt</DependentUpon>
     </Compile>
+    <Compile Include="Session.cs" />
     <Compile Include="Sessions.cs">
       <DependentUpon>Cinema.tt</DependentUpon>
     </Compile>
@@ -125,6 +135,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SignInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SignUpPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,6 +196,7 @@
       <DependentUpon>Cinema.edmx</DependentUpon>
       <LastGenOutput>Cinema.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\profile.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
