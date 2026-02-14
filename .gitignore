@@ -361,3 +361,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/WPFMaster/App.config
+/WPFMaster/WPFMaster.csproj
