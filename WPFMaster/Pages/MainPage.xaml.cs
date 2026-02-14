@@ -20,20 +20,61 @@ namespace WPFMaster.Pages
     /// </summary>
     public partial class MainPage : Page
     {
+        List<Films> FilmsList = new List<Films>();
         public MainPage()
         {
             InitializeComponent();
-            FilmCards.ItemsSource = Core.Context.Films.ToList();
+            FilmsList = Core.Context.Films.OrderBy(f => f.Name).ToList();
+            FilmsListBox.ItemsSource = FilmsList;
         }
 
-        private void FilmClick(object sender, RoutedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Button btn = (Button)sender;
-            Films film = (Films)btn.DataContext;
-            if (film != null )
+            UpdateFilms();
+        }
+
+        private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            UpdateFilms();
+        }
+
+        private void UpdateFilms()
+        {
+            if (FilmsListBox == null) return;
+            FilmsList = Core.Context.Films.ToList();
+            SearchFilms();
+            OrderFilms();
+            FilmsListBox.ItemsSource = FilmsList;
+        }
+
+        private void SearchFilms()
+        {
+            if (SearchBox != null && SearchBox?.Text != "")
             {
-                NavigationService.Navigate(new FilmInfoPage(film));
+                FilmsList = FilmsList.Where(f => f.Name.ToLower().Contains(SearchBox.Text.ToLower())).ToList();
             }
+        }
+
+        private void OrderFilms()
+        {
+            switch(OrderComboBox.SelectedIndex)
+            {
+                case 0:
+                    FilmsList = FilmsList.OrderBy(f => f.Name).ToList();
+                    break;
+                case 1:
+                    FilmsList = FilmsList.OrderByDescending(f => f.RateFilm).ToList();
+                    break;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Session.Instance.CurrentUser != null)
+            {
+                NavigationService.Navigate(new UserPage());
+            }
+            else NavigationService.Navigate(new SignInPage());
         }
     }
 }

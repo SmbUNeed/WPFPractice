@@ -35,8 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>.\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>.\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +63,55 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Cinema.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Core.cs" />
+    <Compile Include="Films.cs">
+      <DependentUpon>Cinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Genres.cs">
+      <DependentUpon>Cinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Halls.cs">
+      <DependentUpon>Cinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SignInPage.xaml.cs">
+      <DependentUpon>SignInPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SignUpPage.xaml.cs">
+      <DependentUpon>SignUpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\UserPage.xaml.cs">
+      <DependentUpon>UserPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Places.cs">
+      <DependentUpon>Cinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RateAge.cs">
+      <DependentUpon>Cinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RateHall.cs">
+      <DependentUpon>Cinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Session.cs" />
+    <Compile Include="Sessions.cs">
+      <DependentUpon>Cinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagrams.cs">
+      <DependentUpon>Cinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Tickets.cs">
+      <DependentUpon>Cinema.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
+      <DependentUpon>Cinema.tt</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,10 +120,36 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Cinema.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cinema.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cinema.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Cinema.edmx</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SignInPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\SignUpPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\UserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -86,6 +169,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Cinema.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Cinema.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Cinema.edmx.diagram">
+      <DependentUpon>Cinema.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +184,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cinema.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Cinema.Context.cs</LastGenOutput>
+      <DependentUpon>Cinema.edmx</DependentUpon>
+    </Content>
+    <Content Include="Cinema.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Cinema.edmx</DependentUpon>
+      <LastGenOutput>Cinema.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Images\profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
