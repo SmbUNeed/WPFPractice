@@ -23,6 +23,8 @@ namespace WPFPr
         public MainWindow()
         {
             InitializeComponent();
+       
         }
+
     }
 }
