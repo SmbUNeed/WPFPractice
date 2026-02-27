@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace WPFMaster
 {
-    internal class Core
+    public class Core
     {
-        public static Entities Context = new Entities();
+        public static AbsoluteCinemaEntities Context = new AbsoluteCinemaEntities();
     }
 }

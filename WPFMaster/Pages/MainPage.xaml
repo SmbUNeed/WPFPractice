@@ -10,40 +10,36 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Width="40" Height="40" HorizontalAlignment="Left" Margin="10" Click="Button_Click" Background="Transparent" BorderBrush="Transparent" Focusable="False" Cursor="Hand">
-            <Image Source="/Images/profile.png"/>
-        </Button>
-        <StackPanel>
-            <TextBlock Text="Absolute Cinema" Height="40" Width="300" TextAlignment="Center" FontSize="30"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Сортировать по:" FontSize="10" Foreground="Gray" VerticalAlignment="Center" Margin="5"/>
-                    <ComboBox x:Name="OrderComboBox" Width="100" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">
-                        <ComboBoxItem Content="Название"/>
-                        <ComboBoxItem Content="Рейтинг"/>
-                    </ComboBox>
-                </StackPanel>
-                
-                <TextBox x:Name="SearchBox" ToolTip="Поиск по названию" Width="300" TextChanged="SearchBox_TextChanged"/>
+        <StackPanel Grid.Row="0" Height="25" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Сортировать по:" FontSize="10" Foreground="Gray" VerticalAlignment="Center" Margin="5"/>
+                <ComboBox x:Name="OrderComboBox" Width="100" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBoxItem Content="Название"/>
+                    <ComboBoxItem Content="Рейтинг"/>
+                </ComboBox>
             </StackPanel>
+
+            <TextBox x:Name="SearchBox" ToolTip="Поиск по названию" Width="300" TextChanged="SearchBox_TextChanged"/>
         </StackPanel>
-        
-        
-        <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="FilmsListBox">
+
+
+        <ListBox Grid.Row="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="FilmsListBox">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Height="250" Width="150">
-                        <TextBlock TextAlignment="Center" Text="{Binding Name}"/>
-                        <Image Height="200" Width="120" Source="{Binding ImagePath}"/>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="5" Text="{Binding RateFilm}"/>
-                            <TextBlock Margin="5" Text="{Binding RateAge.Age, StringFormat={}{0}+}"/>
-                            <TextBlock Margin="5" Text="Сегодня"/>
+                    <Button Height="250" Width="150" Click="Film_Click">
+                        <StackPanel Height="250" Width="150">
+                            <TextBlock TextAlignment="Center" Text="{Binding Name}"/>
+                            <Image Height="200" Width="120" Source="{Binding ImagePath}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="5" Text="{Binding RateFilm}"/>
+                                <TextBlock Margin="5" Text="{Binding RateAge.Age, StringFormat={}{0}+}"/>
+                                <TextBlock Margin="5" Text="Сегодня"/>
+                            </StackPanel>
                         </StackPanel>
-                    </StackPanel>
+                    </Button>
                 </DataTemplate>
             </ListBox.ItemTemplate>
             <ListBox.ItemsPanel>

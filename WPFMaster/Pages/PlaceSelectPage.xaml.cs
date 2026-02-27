@@ -16,16 +16,13 @@ using System.Windows.Shapes;
 namespace WPFMaster.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для UserPage.xaml
+    /// Логика взаимодействия для PlaceSelectPage.xaml
     /// </summary>
-    public partial class UserPage : Page
+    public partial class PlaceSelectPage : Page
     {
-        Users user;
-        public UserPage()
+        public PlaceSelectPage()
         {
             InitializeComponent();
-            user = Session.CurrentUser;
-            InfoBlock.Text = $"{user.Login}\n{user.Name}\n{user.E_mail}";
         }
     }
 }

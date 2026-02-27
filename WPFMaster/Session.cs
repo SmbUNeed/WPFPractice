@@ -13,6 +13,6 @@ namespace WPFMaster
         {
             if (Instance == null) Instance = this;
         }
-        public Users CurrentUser;
+        public static Users CurrentUser;
     }
 }

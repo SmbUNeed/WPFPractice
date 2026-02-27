@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFMaster.Pages;
 
 namespace WPFMaster
 {
@@ -23,6 +24,20 @@ namespace WPFMaster
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Frame.Source = new Uri("Pages/MainPage.xaml", UriKind.Relative);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (Session.CurrentUser != null)
+            {
+                Frame.Source = new Uri("Pages/UserPage.xaml", UriKind.Relative);
+            }
+            else Frame.Source = new Uri("Pages/SignInPage.xaml", UriKind.Relative);
         }
     }
 }

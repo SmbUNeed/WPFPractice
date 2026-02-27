@@ -25,6 +25,7 @@ namespace WPFMaster
         public string Name { get; set; }
         public int RateID { get; set; }
         public int PlaceQuantity { get; set; }
+        public Nullable<decimal> Price { get; set; }
     
         public virtual RateHall RateHall { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

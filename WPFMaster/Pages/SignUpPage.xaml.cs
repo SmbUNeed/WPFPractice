@@ -29,7 +29,27 @@ namespace WPFMaster.Pages
             NavigationService.Navigate(new SignUpPage());
         }
 
-        private bool SignUp(object sender, RoutedEventArgs e)
+        private void SignUp(object sender, RoutedEventArgs e)
+        {
+            if (TrySignUp())
+            {
+                Users user = new Users()
+                {
+                    Name = NameBox.Text,
+                    Login = LoginBox.Text,
+                    Password = PasswordBox.Text,
+                    E_mail = EmailBox.Text,
+                };
+
+                Core.Context.Users.Add(user);
+
+                Session.CurrentUser = user;
+
+                NavigationService.Navigate(new UserPage());
+            }
+        }
+
+        private bool TrySignUp()
         {
             if (Core.Context.Users.FirstOrDefault(u => u.Login == LoginBox.Text) != null)
             {

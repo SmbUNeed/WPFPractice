@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFMaster;
 
 namespace WPFMaster.Pages
 {
@@ -57,7 +58,7 @@ namespace WPFMaster.Pages
 
         private void OrderFilms()
         {
-            switch(OrderComboBox.SelectedIndex)
+            switch (OrderComboBox.SelectedIndex)
             {
                 case 0:
                     FilmsList = FilmsList.OrderBy(f => f.Name).ToList();
@@ -68,13 +69,13 @@ namespace WPFMaster.Pages
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Film_Click(object sender, RoutedEventArgs e)
         {
-            if (Session.Instance.CurrentUser != null)
-            {
-                NavigationService.Navigate(new UserPage());
-            }
-            else NavigationService.Navigate(new SignInPage());
+            Button button = (Button)sender;
+            string filmName = ((Films)button.DataContext).Name;
+            Films film = Core.Context.Films.ToList().FirstOrDefault(f => f.Name == filmName);
+            if (film == null) return;
+            NavigationService.Navigate(new FilmPage(film));
         }
     }
 }

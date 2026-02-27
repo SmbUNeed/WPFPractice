@@ -13,10 +13,10 @@ namespace WPFMaster
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class AbsoluteCinemaEntities : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public AbsoluteCinemaEntities()
+            : base("name=AbsoluteCinemaEntities")
         {
         }
     
@@ -32,8 +32,8 @@ namespace WPFMaster
         public virtual DbSet<RateAge> RateAge { get; set; }
         public virtual DbSet<RateHall> RateHall { get; set; }
         public virtual DbSet<Sessions> Sessions { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Tickets> Tickets { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

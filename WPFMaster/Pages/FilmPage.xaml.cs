@@ -16,16 +16,23 @@ using System.Windows.Shapes;
 namespace WPFMaster.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для UserPage.xaml
+    /// Логика взаимодействия для FilmPage.xaml
     /// </summary>
-    public partial class UserPage : Page
+    public partial class FilmPage : Page
     {
-        Users user;
-        public UserPage()
+        Films CurrentFilm;
+
+        public FilmPage(Films film)
         {
             InitializeComponent();
-            user = Session.CurrentUser;
-            InfoBlock.Text = $"{user.Login}\n{user.Name}\n{user.E_mail}";
+            CurrentFilm = film;
+            SessionListBox.ItemsSource = Core.Context.Sessions.Where(s => s.IdFilm == film.Id).ToList().OrderBy(s => s.Halls.Name);
+            DataContext = film;
+        }
+
+        private void SessionListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
         }
     }
 }

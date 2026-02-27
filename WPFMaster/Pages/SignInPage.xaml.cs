@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFMaster.Pages;
 
 namespace WPFMaster.Pages
 {
@@ -30,7 +31,7 @@ namespace WPFMaster.Pages
             Users user = Core.Context.Users.FirstOrDefault(u => u.Login == LoginBox.Text);
             if (user?.Password == PasswordBox.Text)
             {
-                Session.Instance.CurrentUser = user;
+                Session.CurrentUser = user;
                 NavigationService.Navigate(new UserPage());
             }
             else
@@ -39,7 +40,7 @@ namespace WPFMaster.Pages
             }
         }
 
-        private void Registration(object sender, RoutedEventArgs e)
+        private void RegistrationPage(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new SignUpPage());
         }

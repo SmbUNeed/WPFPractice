@@ -9,6 +9,19 @@
       Title="UserPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="Профиль" FontSize="20" TextAlignment="Center"/>
+            <TextBlock x:Name="InfoBlock" Height="100"/>
+        </StackPanel>
     </Grid>
 </Page>
