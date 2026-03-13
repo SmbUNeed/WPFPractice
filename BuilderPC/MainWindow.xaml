@@ -1,0 +1,25 @@
+<Window x:Class="BuilderPC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Собери сам" Height="650" Width="1000"
+        MinHeight="450" MinWidth="700"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Боковое меню -->
+        <StackPanel Grid.Column="0">
+            <Button Content="Подбор" Click="BtnParts_Click" Height="40"/>
+            <Button Content="Сборка" Click="BtnBuild_Click"  Height="40"/>
+            <Button Content="Сохранённые" Click="BtnSaved_Click" Height="40"/>
+        </StackPanel>
+
+        <!-- Область страниц -->
+        <Frame Grid.Column="1" x:Name="MainFrame"
+               NavigationUIVisibility="Hidden"/>
+    </Grid>
+</Window>

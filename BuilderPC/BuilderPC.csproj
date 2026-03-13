@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BuilderPC</RootNamespace>
+    <AssemblyName>BuilderPC</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\..\..\Downloads\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\..\..\Downloads\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="BuildState.cs" />
+    <Compile Include="Data\assembly_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\basepart_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\boardformfactorcase_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\casesize_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\case_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\certificate_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Core.cs" />
+    <Compile Include="Data\cpu_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\fandimension_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\formfactor_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\gpuinterface_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\gpu_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\hdd_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\igpu_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\manufacturer_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\memorytype_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\motherboard_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\partassembly_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\parttype_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PCBuilder.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PCBuilder.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PCBuilder.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\PCBuilder.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PCBuilder.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Data\powersupply_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\processorcooler_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ram_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\socketprocessorcooler_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\socket_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\ssd_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\storagedeviceinterface_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\storagedevicetype_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\storagedevice_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\sysdiagrams.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\videoconnectorgpu_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data\videoconnector_.cs">
+      <DependentUpon>PCBuilder.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Pages\PartsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Pages\PartsPage.xaml.cs">
+      <DependentUpon>PartsPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Pages\BuildPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Pages\BuildPage.xaml.cs">
+      <DependentUpon>BuildPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Pages\SavedBuildsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Pages\SavedBuildsPage.xaml.cs">
+      <DependentUpon>SavedBuildsPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Windows\SaveBuildWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Windows\SaveBuildWindow.xaml.cs">
+      <DependentUpon>SaveBuildWindow.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Data\PCBuilder.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PCBuilder.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Data\PCBuilder.edmx.diagram">
+      <DependentUpon>PCBuilder.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\PCBuilder.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PCBuilder.Context.cs</LastGenOutput>
+      <DependentUpon>PCBuilder.edmx</DependentUpon>
+    </Content>
+    <Content Include="Data\PCBuilder.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PCBuilder.edmx</DependentUpon>
+      <LastGenOutput>PCBuilder.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

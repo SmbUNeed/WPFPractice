@@ -1,0 +1,65 @@
+<Page x:Class="BuilderPC.Pages.PartsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Подбор комплектующих">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Список типов комплектующих -->
+        <DockPanel Grid.Column="0">
+            <TextBlock DockPanel.Dock="Top" Text="Тип:" Margin="4"/>
+            <ListBox x:Name="LstTypes"
+                     DisplayMemberPath="name"
+                     SelectionChanged="LstTypes_SelectionChanged"/>
+        </DockPanel>
+
+        <!-- Правая часть: фильтры + список -->
+        <DockPanel Grid.Column="1">
+
+            <!-- Панель фильтров -->
+            <Grid DockPanel.Dock="Top" Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Margin="0,0,8,0">
+                    <TextBlock Text="Поиск:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                    <TextBox x:Name="TxtSearch" Width="200"
+                             TextChanged="Filter_Changed"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal">
+                    <TextBlock Text="Производитель:" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                    <ComboBox x:Name="CmbManufacturer" Width="130"
+                              DisplayMemberPath="name"
+                              SelectionChanged="Filter_Changed"/>
+                </StackPanel>
+            </Grid>
+
+            <!-- Список комплектующих -->
+            <ListView x:Name="LvParts">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Название"        Width="260" DisplayMemberBinding="{Binding name}"/>
+                        <GridViewColumn Header="Производитель"   Width="130" DisplayMemberBinding="{Binding manufacturer_.name}"/>
+                        <GridViewColumn Header="Характеристики"  Width="280" DisplayMemberBinding="{Binding SpecInfo}"/>
+                        <GridViewColumn Header="Цена, руб."      Width="100" DisplayMemberBinding="{Binding price}"/>
+                        <GridViewColumn Header="" Width="90">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Выбрать" Tag="{Binding}"
+                                            Click="BtnSelect_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+    </Grid>
+</Page>

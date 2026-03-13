@@ -1,0 +1,60 @@
+<Page x:Class="BuilderPC.Pages.BuildPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Текущая сборка">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="200"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Список выбранных комплектующих -->
+        <DockPanel Grid.Column="0">
+            <TextBlock DockPanel.Dock="Top" Text="Текущая сборка" FontSize="14"
+                       FontWeight="Bold" Margin="6,6,6,4"/>
+
+            <!-- Предупреждения совместимости -->
+            <ItemsControl x:Name="LstWarnings" DockPanel.Dock="Top" Margin="6,0,6,4"
+                          Visibility="Collapsed">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" Foreground="Red" TextWrapping="Wrap"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <ListView x:Name="LvBuild">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Тип"           Width="150" DisplayMemberBinding="{Binding parttype_.name}"/>
+                        <GridViewColumn Header="Название"      Width="270" DisplayMemberBinding="{Binding name}"/>
+                        <GridViewColumn Header="Производитель" Width="130" DisplayMemberBinding="{Binding manufacturer_.name}"/>
+                        <GridViewColumn Header="Цена, руб."    Width="100" DisplayMemberBinding="{Binding price}"/>
+                        <GridViewColumn Header="" Width="80">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Удалить"
+                                            Tag="{Binding parttypeid}"
+                                            Click="BtnRemove_Click"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </DockPanel>
+
+        <!-- Боковая панель: итог -->
+        <DockPanel Grid.Column="1" Margin="8">
+            <TextBlock DockPanel.Dock="Top" Text="Итого:" FontWeight="Bold" Margin="0,0,0,4"/>
+            <TextBlock DockPanel.Dock="Top" x:Name="TxtTotal"
+                       FontSize="16" FontWeight="Bold" Margin="0,0,0,12"/>
+
+            <Button DockPanel.Dock="Bottom" Content="Очистить"
+                    Click="BtnClear_Click" Margin="0,4,0,0"/>
+            <Button DockPanel.Dock="Bottom" Content="Сохранить сборку"
+                    Click="BtnSave_Click"/>
+        </DockPanel>
+    </Grid>
+</Page>
