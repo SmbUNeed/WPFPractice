@@ -28,10 +28,9 @@ namespace WPFPr.Pages
 
         private void CategoriesList_Selected(object sender, RoutedEventArgs e)
         {
-            object si = CategoriesList.SelectedItem;
-            Console.WriteLine(si);
+            parttype_ si = CategoriesList.SelectedItem as parttype_;
             if (si == null) return;
-            NavigationService.Navigate(new CategoryPage(si as parttype_));
+            NavigationService.Navigate(new CategoryPage(si));
         }
     }
 }

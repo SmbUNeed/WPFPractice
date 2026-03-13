@@ -7,6 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Frame Source="Pages/MainPage.xaml" NavigationUIVisibility="Hidden"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Margin="8" Content="Домой" HorizontalAlignment="Left" Width="80" Click="Home"/>
+        <Frame Grid.Row="1" Name="MainFrame" Source="Pages/MainPage.xaml" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

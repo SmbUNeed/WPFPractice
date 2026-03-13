@@ -23,8 +23,11 @@ namespace WPFPr
         public MainWindow()
         {
             InitializeComponent();
-       
         }
 
+        private void Home(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Source = new Uri("Pages/MainPage.xaml", UriKind.Relative);
+        }
     }
 }

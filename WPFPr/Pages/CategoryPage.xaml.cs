@@ -26,12 +26,13 @@ namespace WPFPr.Pages
             InitializeComponent();
             bps = Core.Context.basepart_.ToList().Where(bsp => bsp.parttype_ == prt).ToList();
             ComponentList.ItemsSource = bps;
+            CategoryName.Text = prt.name;
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             string searchText = SearchBox.Text;
-            if (string.IsNullOrEmpty(searchText)) return;
+            if (string.IsNullOrEmpty(searchText)) ComponentList.ItemsSource = bps;
             ComponentList.ItemsSource = bps.Where(bp => bp.name.Contains(searchText)).ToList();
         }
     }

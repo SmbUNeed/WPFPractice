@@ -15,6 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
             <TextBox x:Name="SearchBox" TextChanged="SearchBox_TextChanged"/>
+            <TextBlock x:Name="CategoryName" Height="48" HorizontalAlignment="Center" FontSize="20"/>
         </StackPanel>
         <ListBox Grid.Row="1" x:Name="ComponentList">
             <ListBox.ItemTemplate>
