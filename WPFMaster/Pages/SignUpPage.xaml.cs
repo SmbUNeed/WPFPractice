@@ -17,7 +17,7 @@ namespace WPFMaster.Pages
 {
     /// <summary>
     /// Логика взаимодействия для SignUpPage.xaml
-    /// </summary>
+    /// </summary>w
     public partial class SignUpPage : Page
     {
         public SignUpPage()
@@ -26,7 +26,7 @@ namespace WPFMaster.Pages
         }
         private void SignInPage(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new SignUpPage());
+            NavigationService.Navigate(new SignInPage());
         }
 
         private void SignUp(object sender, RoutedEventArgs e)
@@ -42,6 +42,8 @@ namespace WPFMaster.Pages
                 };
 
                 Core.Context.Users.Add(user);
+
+                Core.Context.SaveChanges();
 
                 Session.CurrentUser = user;
 

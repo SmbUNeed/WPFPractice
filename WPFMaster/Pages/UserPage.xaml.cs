@@ -15,17 +15,43 @@ using System.Windows.Shapes;
 
 namespace WPFMaster.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для UserPage.xaml
-    /// </summary>
     public partial class UserPage : Page
     {
         Users user;
+
         public UserPage()
         {
             InitializeComponent();
             user = Session.CurrentUser;
             InfoBlock.Text = $"{user.Login}\n{user.Name}\n{user.E_mail}";
+            LoadTickets();
+        }
+
+        private void LoadTickets()
+        {
+            var db = Core.Context;
+
+            var tickets = db.Tickets
+                .Where(t => t.IdUser == user.Id)
+                .Select(t => new
+                {
+                    Film = t.Sessions.Films.Name,
+                    Hall = t.Sessions.Halls.Name,
+                    DateTime = t.Sessions.DateTime,
+                    Row = t.Places.Row,
+                    Number = t.Places.Number,
+                    Price = t.Sessions.Halls.Price
+                })
+                .ToList();
+
+            TicketsList.ItemsSource = tickets.Select(t => new
+            {
+                Film = t.Film,
+                Hall = $"Зал: {t.Hall}",
+                DateTime = t.DateTime.ToString(),
+                Seat = $"Ряд {t.Row}, Место {t.Number}",
+                Price = $"{t.Price:N0} ₽"
+            }).ToList();
         }
     }
 }

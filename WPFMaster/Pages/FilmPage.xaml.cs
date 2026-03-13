@@ -32,7 +32,11 @@ namespace WPFMaster.Pages
 
         private void SessionListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+
+            if (Session.CurrentUser == null)
+                NavigationService.Navigate(new SignInPage());
+            else 
+                NavigationService.Navigate(new SelectPlacesPage((Sessions)e.AddedItems[0]));
         }
     }
 }
