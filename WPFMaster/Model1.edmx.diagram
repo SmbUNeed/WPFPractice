@@ -4,14 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="56c6583c4ad345fc9d0ee115029c3b50" Name="Diagram1">
+      <Diagram DiagramId="affa42ddc045404c927317611c4722bd" Name="Diagram1">
         <EntityTypeShape EntityType="AbsoluteCinemaModel.Films" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsoluteCinemaModel.Genres" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsoluteCinemaModel.Halls" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsoluteCinemaModel.Places" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsoluteCinemaModel.Halls" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsoluteCinemaModel.Places" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsoluteCinemaModel.RateAge" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AbsoluteCinemaModel.RateHall" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsoluteCinemaModel.RateHall" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsoluteCinemaModel.Sessions" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AbsoluteCinemaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsoluteCinemaModel.Tickets" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AbsoluteCinemaModel.Users" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
         <AssociationConnector Association="AbsoluteCinemaModel.FK_Film_RateAge" ManuallyRouted="false" />
@@ -24,7 +25,6 @@
         <AssociationConnector Association="AbsoluteCinemaModel.FK_Ticket_User" ManuallyRouted="false" />
         <AssociationConnector Association="AbsoluteCinemaModel.BusyPlaces" ManuallyRouted="false" />
         <AssociationConnector Association="AbsoluteCinemaModel.GenresFilms" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="AbsoluteCinemaModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

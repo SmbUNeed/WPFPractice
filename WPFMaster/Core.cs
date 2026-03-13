@@ -8,6 +8,6 @@ namespace WPFMaster
 {
     public class Core
     {
-        public static AbsoluteCinemaEntities Context = new AbsoluteCinemaEntities();
+        public static Entities1 Context = new Entities1();
     }
 }
