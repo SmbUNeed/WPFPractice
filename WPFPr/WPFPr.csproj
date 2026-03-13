@@ -214,11 +214,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <EntityDeploy Include="PCBuilder.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>PCBuilder.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="packages.config" />
     <None Include="PCBuilder.edmx.diagram">
       <DependentUpon>PCBuilder.edmx</DependentUpon>
     </None>
@@ -229,6 +229,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="PCBuilder.Context.tt">
@@ -242,9 +245,5 @@
       <LastGenOutput>PCBuilder.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

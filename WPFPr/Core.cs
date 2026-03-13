@@ -8,6 +8,6 @@ namespace WPFPr
 {
     internal class Core
     {
-        public static Entities Context = new Entities();
+        public static PCBuilderEntities Context = new PCBuilderEntities();
     }
 }
