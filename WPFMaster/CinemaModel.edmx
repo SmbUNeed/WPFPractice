@@ -538,7 +538,7 @@
           <End Role="Films" Type="Self.Films" Multiplicity="*" />
           <End Role="Genres" Type="Self.Genres" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Films" EntityType="Self.Films" />
           <EntitySet Name="Genres" EntityType="Self.Genres" />
           <EntitySet Name="Halls" EntityType="Self.Halls" />
@@ -595,7 +595,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище AbsoluteCinemaModelContainer" CdmEntityContainer="Entities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AbsoluteCinemaModelContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Films">
             <EntityTypeMapping TypeName="AbsoluteCinemaModel.Films">
               <MappingFragment StoreEntitySet="Films">

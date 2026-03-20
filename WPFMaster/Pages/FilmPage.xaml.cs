@@ -27,6 +27,12 @@ namespace WPFMaster.Pages
             InitializeComponent();
             CurrentFilm = film;
             SessionListBox.ItemsSource = Core.Context.Sessions.Where(s => s.IdFilm == film.Id).ToList().OrderBy(s => s.Halls.Name);
+            string gs = "";
+            foreach(var genre in film.Genres)
+            {
+                gs += genre.Name + " ";
+            }
+            GenreBox.Text = gs;
             DataContext = film;
         }
 

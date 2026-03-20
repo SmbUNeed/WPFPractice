@@ -1,4 +1,5 @@
-﻿using System;
+﻿using WPFMaster;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace WPFMaster
 {
     public class Core
     {
-        public static Entities1 Context = new Entities1();
+        public static Entities Context = new Entities();
     }
 }
