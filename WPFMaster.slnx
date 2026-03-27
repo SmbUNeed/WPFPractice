@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="WPFMaster/WPFMaster.csproj" Id="a1b2c3d4-e5f6-7890-abcd-ef1234567890" />
+  <Project Path="RegisterUnitTest/RegisterUnitProject.csproj" Id="29811968-9a7d-4dd3-a581-aba0fce79a00" />
+  <Project Path="UnitTestProject/AuthUnitProject.csproj" Id="4dd8bc15-073b-4275-973c-b818f7d3c4e6" />
+  <Project Path="WPFMaster/WpfMaster.csproj" Id="a1b2c3d4-e5f6-7890-abcd-ef1234567890" />
 </Solution>

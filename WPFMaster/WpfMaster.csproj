@@ -86,7 +86,8 @@
     <Compile Include="RateHall.cs">
       <DependentUpon>CinemaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Session.cs" />
+    <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\Session.cs" />
     <Compile Include="Sessions.cs">
       <DependentUpon>CinemaModel.tt</DependentUpon>
     </Compile>

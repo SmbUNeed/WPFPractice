@@ -31,14 +31,20 @@ namespace WPFMaster.Pages
 
         private void SignUp(object sender, RoutedEventArgs e)
         {
-            if (TrySignUp())
+            string name = NameBox.Text;
+            string login = LoginBox.Text;
+            string password = PasswordBox.Text;
+            string confirmPassword = ConfirmPasswordBox.Text;
+            string email = EmailBox.Text;
+            
+            if (TrySignUp(login, password, confirmPassword, email))
             {
                 Users user = new Users()
                 {
-                    Name = NameBox.Text,
-                    Login = LoginBox.Text,
-                    Password = PasswordBox.Text,
-                    E_mail = EmailBox.Text,
+                    Name = name,
+                    Login = login,
+                    Password = password,
+                    E_mail = email
                 };
 
                 Core.Context.Users.Add(user);
@@ -51,19 +57,24 @@ namespace WPFMaster.Pages
             }
         }
 
-        private bool TrySignUp()
+        public bool TrySignUp(string login, string password, string confirmPassword, string email)
         {
-            if (Core.Context.Users.FirstOrDefault(u => u.Login == LoginBox.Text) != null)
+            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(email))
+            {
+                MessageBox.Show("Заполните все поля!", "Ошибка ввода", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+            if (Core.Context.Users.FirstOrDefault(u => u.Login == login) != null)
             {
                 MessageBox.Show("Данный логин занят");
                 return false;
             }
-            if (PasswordBox.Text != ConfirmPasswordBox.Text)
+            if (password != confirmPassword)
             {
                 MessageBox.Show("Пароли не совпадают");
                 return false;
             }
-            if (!EmailBox.Text.Contains("@"))
+            if (!email.Contains("@"))
             {
                 MessageBox.Show("Некорректная электронная почта");
                 return false;

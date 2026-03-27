@@ -28,16 +28,18 @@ namespace WPFMaster.Pages
 
         private void SignIn(object sender, RoutedEventArgs e)
         {
-            Users user = Core.Context.Users.FirstOrDefault(u => u.Login == LoginBox.Text);
-            if (user?.Password == PasswordBox.Text)
+            Auth(LoginBox.Text, PasswordBox.Text);
+        }
+
+        public bool Auth(string login, string password)
+        {
+            if (AuthService.Auth(login, password))
             {
-                Session.CurrentUser = user;
-                NavigationService.Navigate(new UserPage());
+                Session.CurrentUser = Core.Context.Users.FirstOrDefault(u => u.Login == login);
+                NavigationService.GoBack();
+                return true;
             }
-            else
-            {
-                MessageBox.Show("Неверный логин или пароль");
-            }
+            return false;
         }
 
         private void RegistrationPage(object sender, RoutedEventArgs e)
