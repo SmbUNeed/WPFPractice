@@ -63,10 +63,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Game\Abilities.cs" />
-    <Compile Include="Game\Enemy.cs" />
-    <Compile Include="Game\Entity.cs" />
-    <Compile Include="Game\Weapon.cs" />
+    <Compile Include="Game\Abilities\ArmorPiercingAbility.cs" />
+    <Compile Include="Game\Abilities\CriticalHitAbility.cs" />
+    <Compile Include="Game\Abilities\FreezeAbility.cs" />
+    <Compile Include="Game\Abilities\ISpecialAbility.cs" />
+    <Compile Include="Game\Abilities\AttackContext.cs" />
+    <Compile Include="Game\Entities\Enemy.cs" />
+    <Compile Include="Game\Entities\Entity.cs" />
+    <Compile Include="Game\Entities\Goblin.cs" />
+    <Compile Include="Game\Entities\Mage.cs" />
+    <Compile Include="Game\Items\Armor.cs" />
+    <Compile Include="Game\Items\HealthPotion.cs" />
+    <Compile Include="Game\Items\IItem.cs" />
+    <Compile Include="Game\Entities\Player.cs" />
+    <Compile Include="Game\Entities\Skeleton.cs" />
+    <Compile Include="Game\Items\Weapon.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -97,6 +108,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Game\Services\" />
+    <Folder Include="Game\ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

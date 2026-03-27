@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyProject.Game
 {
-    internal abstract class Enemy : Entity
+    internal class Mage : Enemy
     {
-        public int Armor;
-        public int Damage;
-        
-        
     }
 }
