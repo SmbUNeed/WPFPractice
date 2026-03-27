@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyProject.Game.Items
 {
-    internal interface IItem
+    internal interface IConsumable
     {
         void Use(Player player);
     }

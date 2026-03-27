@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyProject.Game.Abilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,9 @@ namespace MyProject.Game
 {
     internal class Mage : Enemy
     {
+        public Mage(int maxHp=25, int armor=2, int damage=15) : base(maxHp, armor, damage)
+        {
+            SpecialAbility = new FreezeAbility();
+        }
     }
 }

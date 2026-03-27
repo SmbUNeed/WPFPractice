@@ -66,7 +66,10 @@
     <Compile Include="Game\Abilities\ArmorPiercingAbility.cs" />
     <Compile Include="Game\Abilities\CriticalHitAbility.cs" />
     <Compile Include="Game\Abilities\FreezeAbility.cs" />
-    <Compile Include="Game\Abilities\ISpecialAbility.cs" />
+    <Compile Include="Game\Entities\Bosses\IBoss.cs" />
+    <Compile Include="Game\Entities\Bosses\VVG.cs" />
+    <Compile Include="Game\Interfaces\IFreezable.cs" />
+    <Compile Include="Game\Interfaces\ISpecialAbility.cs" />
     <Compile Include="Game\Abilities\AttackContext.cs" />
     <Compile Include="Game\Entities\Enemy.cs" />
     <Compile Include="Game\Entities\Entity.cs" />
@@ -74,10 +77,11 @@
     <Compile Include="Game\Entities\Mage.cs" />
     <Compile Include="Game\Items\Armor.cs" />
     <Compile Include="Game\Items\HealthPotion.cs" />
-    <Compile Include="Game\Items\IItem.cs" />
+    <Compile Include="Game\Interfaces\IConsumable.cs" />
     <Compile Include="Game\Entities\Player.cs" />
     <Compile Include="Game\Entities\Skeleton.cs" />
     <Compile Include="Game\Items\Weapon.cs" />
+    <Compile Include="Game\Services\CombatService.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -110,7 +114,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Game\Services\" />
     <Folder Include="Game\ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

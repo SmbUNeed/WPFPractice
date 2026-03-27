@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyProject.Game.Abilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,9 @@ namespace MyProject.Game
 {
     internal class Skeleton : Enemy
     {
+        public Skeleton(int maxHp=40, int armor=5, int damage=10) : base(maxHp, armor, damage)
+        {
+            SpecialAbility = new ArmorPiercingAbility();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyProject.Game.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,7 @@ namespace MyProject.Game
 {
     internal class Armor
     {
-        public string Description { get; }
+        public string Name { get; }
         public int ArmorNumber { get; }
-
     }
 }
