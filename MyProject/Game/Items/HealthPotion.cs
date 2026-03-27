@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace MyProject.Game
 {
-    internal class HealthPotion : IConsumable
+    internal class HealthPotion : IConsumable, IItem
     {
+        public string Name { get; } = "Зелье исцеления";
         public void Use(Player player) =>
             player.Hp = player.MaxHp;
     }

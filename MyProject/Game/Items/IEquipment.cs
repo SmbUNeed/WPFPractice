@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyProject.Game.Entities.Bosses
+namespace MyProject.Game.Items
 {
-    internal interface IBoss
+    internal interface IEquipment
     {
-        Enemy Race { get; set; }
     }
 }

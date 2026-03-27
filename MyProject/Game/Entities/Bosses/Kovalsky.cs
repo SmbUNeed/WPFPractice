@@ -7,22 +7,22 @@ using System.Threading.Tasks;
 
 namespace MyProject.Game.Entities.Bosses
 {
-    internal class VVG : Boss
+    internal class Kovalsky : Boss
     {
-        public VVG() 
+        public Kovalsky()
         {
-            Name = "ВВГ";
-            Race = new Goblin();
+            Name = "Ковальский";
+            Race = new Skeleton();
 
-            MaxHp = Race.Hp * 2;
-            Damage = (int)(Race.Damage * 1.5);
-            Armor = (int)(Race.Armor * 1.2);
+            MaxHp = (int)(Race.MaxHp * 2.5);
+            Damage = (int)(Race.Damage * 1.3);
+            Armor = (int)(Race.Armor * 1.4);
 
             Hp = MaxHp;
 
             Abilities = new ISpecialAbility[]
             {
-                new CriticalHitAbility(0.3)
+                new ArmorPiercingAbility()
             };
         }
     }
