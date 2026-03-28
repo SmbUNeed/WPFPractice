@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace MyProject.Game.Entities
+namespace MyProject.Game.Entities.Bosses
 {
     internal class ArchimageCPP : Boss
     {

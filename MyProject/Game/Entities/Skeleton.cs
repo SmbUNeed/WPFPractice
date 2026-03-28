@@ -11,7 +11,8 @@ namespace MyProject.Game
     {
         public Skeleton(int maxHp=40, int armor=5, int damage=10) : base(maxHp, armor, damage)
         {
-            SpecialAbility = new ArmorPiercingAbility();
+            Name = "Скелет";
+            Abilities = new List<ISpecialAbility> { new ArmorPiercingAbility() };
         }
     }
 }

@@ -1,0 +1,38 @@
+<UserControl x:Class="MyProject.Game.Views.GameOverView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#1a1a2e">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="320">
+            <TextBlock Text="💀" FontSize="72" TextAlignment="Center"/>
+            <TextBlock Text="ВЫ ПОГИБЛИ" FontSize="36" FontWeight="Bold"
+                       Foreground="#e74c3c" TextAlignment="Center" Margin="0,10,0,6"/>
+            <TextBlock Text="Темница поглотила вас..." FontSize="15"
+                       Foreground="#888" TextAlignment="Center" Margin="0,0,0,40"/>
+            <Button Content="НАЧАТЬ ЗАНОВО" Command="{Binding RestartCommand}"
+                    Height="50" FontSize="18" FontWeight="Bold"
+                    Foreground="White" BorderThickness="0">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#c0392b"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Background="{TemplateBinding Background}" CornerRadius="6" Padding="10">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="#e74c3c"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,298 @@
+<UserControl x:Class="MyProject.Game.Views.GameView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             Background="#1a1a2e">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+
+        <Style x:Key="ActionBtn" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Margin" Value="4,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="6" Padding="14,6">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.3"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Opacity" Value="0.85"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="EnemyBtn" TargetType="Button">
+            <Setter Property="Background" Value="#0f3460"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="8,0"/>
+            <Setter Property="MinWidth" Value="140"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8" Padding="16,12">
+                            <ContentPresenter/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#1a4a80"/>
+                                <Setter Property="BorderBrush" Value="#e74c3c"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#c0392b"/>
+                                <Setter Property="BorderBrush" Value="#ff6b6b"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.4"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="44"/>
+            <RowDefinition Height="38"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="160"/>
+        </Grid.RowDefinitions>
+
+        <!-- ЗАГОЛОВОК -->
+        <Border Grid.Row="0" Background="#0f0f1a">
+            <TextBlock Text="&#x2694; ROGUELIKE DUNGEON" FontSize="18" FontWeight="Bold"
+                       Foreground="#e2b96f" HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+        </Border>
+
+        <!-- СТАТУС-БАР -->
+        <Border Grid.Row="1" Background="#16213e">
+            <Grid Margin="16,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
+                    <TextBlock Text="ЭТАЖ " Foreground="#888" FontSize="12" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding CurrentFloor}" Foreground="#e2b96f"
+                               FontSize="14" FontWeight="Bold"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal"
+                            HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="HP  " Foreground="#888" FontSize="12" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <ProgressBar Minimum="0" Maximum="{Binding PlayerMaxHp}"
+                                 Value="{Binding PlayerHp, Mode=OneWay}"
+                                 Width="200" Height="14"
+                                 Foreground="#e74c3c" Background="#333" BorderThickness="0"/>
+                    <TextBlock Foreground="White" FontSize="12" Margin="8,0,0,0" VerticalAlignment="Center">
+                        <Run Text="{Binding PlayerHp, Mode=OneWay}"/>
+                        <Run Text="/"/>
+                        <Run Text="{Binding PlayerMaxHp, Mode=OneWay}"/>
+                    </TextBlock>
+                </StackPanel>
+
+                <TextBlock Grid.Column="2" Text="&#x2744; ЗАМОРОЖЕН"
+                           Foreground="#7ec8e3" FontSize="12" FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Visibility="{Binding IsPlayerFrozen, Converter={StaticResource BoolToVis}}"/>
+            </Grid>
+        </Border>
+
+        <!-- ИГРОВАЯ ОБЛАСТЬ -->
+        <Border Grid.Row="2" Background="#12122a" Margin="10,8,10,4">
+            <Grid>
+                <!-- Ожидание / сундук -->
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <StackPanel.Style>
+                        <Style TargetType="StackPanel">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsInCombat}" Value="False">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
+                    <StackPanel Visibility="{Binding IsChestPending, Converter={StaticResource BoolToVis}}">
+                        <TextBlock Text="&#x1F381;" FontSize="56" TextAlignment="Center"/>
+                        <TextBlock Text="СУНДУК!" FontSize="22" FontWeight="Bold"
+                                   Foreground="#e2b96f" TextAlignment="Center" Margin="0,8,0,4"/>
+                        <TextBlock Text="{Binding PendingItem.Name}" FontSize="15"
+                                   Foreground="White" TextAlignment="Center"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,16,0,0">
+                            <Button Content="&#x2714; Взять" Command="{Binding TakeItemCommand}"
+                                    Background="#27ae60" Style="{StaticResource ActionBtn}"/>
+                            <Button Content="&#x2716; Выбросить" Command="{Binding DiscardItemCommand}"
+                                    Background="#7f8c8d" Style="{StaticResource ActionBtn}"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel>
+                        <StackPanel.Style>
+                            <Style TargetType="StackPanel">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsChestPending}" Value="False">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </StackPanel.Style>
+                        <TextBlock Text="&#x1F3F0;" FontSize="56" TextAlignment="Center"/>
+                        <TextBlock Text="Нажмите «Следующий ход»" FontSize="15"
+                                   Foreground="#555" TextAlignment="Center" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <!-- Состояние: бой -->
+                <Grid Visibility="{Binding IsInCombat, Converter={StaticResource BoolToVis}}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- Подсказка -->
+                    <TextBlock Grid.Row="0"
+                               Text="&#x2694; Нажмите на врага для атаки"
+                               Foreground="#e2b96f" FontSize="12" FontWeight="Bold"
+                               HorizontalAlignment="Center" Margin="0,8,0,0"/>
+
+                    <!-- Враги — кликабельные кнопки -->
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="10">
+                        <ItemsControl ItemsSource="{Binding CurrentEnemies}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource EnemyBtn}"
+                                            Command="{Binding DataContext.AttackEnemyCommand,
+                                                      RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}">
+                                        <StackPanel>
+                                            <TextBlock Text="&#x1F47E;" FontSize="36" TextAlignment="Center"/>
+                                            <TextBlock Text="&#x2694; АТАКОВАТЬ" FontSize="9" FontWeight="Bold"
+                                                       Foreground="#e74c3c" TextAlignment="Center"
+                                                       Margin="0,2,0,2" Opacity="0.8"/>
+                                            <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="Bold"
+                                                       Foreground="White" TextAlignment="Center" Margin="0,4,0,4"/>
+                                            <ProgressBar Minimum="0" Maximum="{Binding MaxHp}"
+                                                         Value="{Binding Hp, Mode=OneWay}"
+                                                         Height="8" Foreground="#e74c3c"
+                                                         Background="#333" BorderThickness="0"/>
+                                            <TextBlock TextAlignment="Center" Foreground="#aaa" FontSize="11" Margin="0,3,0,0">
+                                                <Run Text="{Binding Hp, Mode=OneWay}"/>
+                                                <Run Text="/"/>
+                                                <Run Text="{Binding MaxHp, Mode=OneWay}"/>
+                                                <Run Text=" HP"/>
+                                            </TextBlock>
+                                            <TextBlock TextAlignment="Center" Foreground="#888" FontSize="11" Margin="0,2,0,0">
+                                                <Run Text="Атк:"/>
+                                                <Run Text="{Binding Damage, Mode=OneWay}"/>
+                                                <Run Text="  Защ:"/>
+                                                <Run Text="{Binding Armor, Mode=OneWay}"/>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </Button>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                    <!-- Кнопка «Защититься» по центру снизу -->
+                    <Border Grid.Row="2" Background="#0a0a1a" Padding="12,10">
+                        <Button Content="&#x1F6E1;  Защититься" Command="{Binding DefendCommand}"
+                                Background="#2980b9" Style="{StaticResource ActionBtn}"
+                                HorizontalAlignment="Center" Width="200" Height="44"
+                                FontSize="15"/>
+                    </Border>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!-- НИЖНЯЯ ПАНЕЛЬ: Инвентарь + Лог -->
+        <Grid Grid.Row="3" Margin="10,0,10,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- ИНВЕНТАРЬ -->
+            <Border Grid.Column="0" Background="#16213e" CornerRadius="8" Padding="14,10" Margin="0,0,5,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel Grid.Row="0" Margin="0,0,0,8">
+                        <TextBlock Text="ИНВЕНТАРЬ" FontWeight="Bold" Foreground="#e2b96f" FontSize="13"/>
+                        <Button DockPanel.Dock="Right" Content="&#x27A4; Следующий ход"
+                                Command="{Binding NextMoveCommand}"
+                                Background="#2ecc71" Style="{StaticResource ActionBtn}"
+                                HorizontalAlignment="Right"/>
+                    </DockPanel>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Border Background="#0f3460" CornerRadius="6" Padding="10,6" Margin="0,0,8,0">
+                            <StackPanel>
+                                <TextBlock Text="&#x2694;" FontSize="18" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding CurrentWeapon}" Foreground="#f0c070"
+                                           FontSize="11" FontWeight="Bold" TextAlignment="Center"
+                                           TextWrapping="Wrap" MaxWidth="80"/>
+                            </StackPanel>
+                        </Border>
+                        <Border Background="#0f3460" CornerRadius="6" Padding="10,6">
+                            <StackPanel>
+                                <TextBlock Text="&#x1F6E1;" FontSize="18" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding CurrentArmor}" Foreground="#7ec8e3"
+                                           FontSize="11" FontWeight="Bold" TextAlignment="Center"
+                                           TextWrapping="Wrap" MaxWidth="80"/>
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <!-- ЛОГ СОБЫТИЙ -->
+            <Border Grid.Column="1" Background="#16213e" CornerRadius="8" Padding="14,10" Margin="5,0,0,0">
+                <DockPanel>
+                    <TextBlock DockPanel.Dock="Top" Text="ЖУРНАЛ" FontWeight="Bold"
+                               Foreground="#e2b96f" FontSize="13" Margin="0,0,0,6"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <ItemsControl ItemsSource="{Binding EventLog}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding}" Foreground="#ccc" FontSize="11"
+                                               TextWrapping="Wrap" Padding="0,1"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</UserControl>

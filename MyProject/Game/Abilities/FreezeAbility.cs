@@ -8,7 +8,7 @@ namespace MyProject.Game.Abilities
 {
     public sealed class FreezeAbility : ISpecialAbility
     {
-        public readonly double _chance;
+        private readonly double _chance;
 
         public FreezeAbility(double chance = 0.15) =>
             _chance = chance;

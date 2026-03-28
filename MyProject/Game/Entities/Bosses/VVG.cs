@@ -14,7 +14,7 @@ namespace MyProject.Game.Entities.Bosses
             Name = "ВВГ";
             Race = new Goblin();
 
-            MaxHp = Race.Hp * 2;
+            MaxHp = Race.MaxHp * 2;
             Damage = (int)(Race.Damage * 1.5);
             Armor = (int)(Race.Armor * 1.2);
 

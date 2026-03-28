@@ -1,4 +1,5 @@
 ﻿using MyProject.Game.Interfaces;
+using MyProject.Game.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,24 @@ namespace MyProject.Game
         public bool IsFrozen { get; set; }
         public Weapon CurrentWeapon { get; private set; }
         public Armor CurrentArmor { get; private set; }
-        public void Equip(Armor armor) =>
-            CurrentArmor = armor;
-        public void Equip(Weapon weapon) => 
-            CurrentWeapon = weapon;
+        public void Equip(IEquipment equipment)
+        {
+            if (equipment is Weapon weapon)
+            {
+                CurrentWeapon = weapon;
+            }
+            else if (equipment is Armor armor)
+            {
+                CurrentArmor = armor;
+            }
+        }
+
+        public void ApplyAttackContext(Abilities.AttackContext ctx)
+        {
+            int armorValue = ctx.IgnoreArmor ? 0 : (CurrentArmor?.ArmorNumber ?? 0);
+            int damage = Math.Max(1, ctx.Damage - armorValue);
+            IsFrozen = ctx.SkipTurn;
+            Hp -= damage;
+        }
     }
 }

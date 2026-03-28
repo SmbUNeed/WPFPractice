@@ -11,7 +11,8 @@ namespace MyProject.Game
     {
         public Goblin(int maxHp=30, int armor=3, int damage=12) : base(maxHp, armor, damage)
         {
-            SpecialAbility = new CriticalHitAbility();
+            Name = "Гоблин";
+            Abilities = new List<ISpecialAbility>{ new CriticalHitAbility() };
         }
     }
 }

@@ -14,6 +14,22 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\artom\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,6 +49,18 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>FA4711CD477EE99B876917A62FCE7E841A5A978D</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>MyProject_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -59,43 +87,73 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Game\Views\MainMenuView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Game\Views\GameView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Game\Views\GameOverView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Game\Abilities\ArmorPiercingAbility.cs" />
-    <Compile Include="Game\Abilities\CriticalHitAbility.cs" />
-    <Compile Include="Game\Abilities\FreezeAbility.cs" />
-    <Compile Include="Game\Abilities\PestovCMM.cs" />
-    <Compile Include="Game\Data\Storage.cs" />
-    <Compile Include="Game\Entities\ArchimageCPP.cs" />
-    <Compile Include="Game\Entities\Bosses\Boss.cs" />
-    <Compile Include="Game\Entities\Bosses\Kovalsky.cs" />
-    <Compile Include="Game\Entities\Bosses\VVG.cs" />
-    <Compile Include="Game\Entities\IFreezable.cs" />
-    <Compile Include="Game\Abilities\ISpecialAbility.cs" />
-    <Compile Include="Game\Abilities\AttackContext.cs" />
-    <Compile Include="Game\Entities\Enemy.cs" />
-    <Compile Include="Game\Entities\Entity.cs" />
-    <Compile Include="Game\Entities\Goblin.cs" />
-    <Compile Include="Game\Entities\Mage.cs" />
-    <Compile Include="Game\Items\Armor.cs" />
-    <Compile Include="Game\Items\HealthPotion.cs" />
-    <Compile Include="Game\Items\IConsumable.cs" />
-    <Compile Include="Game\Entities\Player.cs" />
-    <Compile Include="Game\Entities\Skeleton.cs" />
-    <Compile Include="Game\Items\IEquipment.cs" />
-    <Compile Include="Game\Items\IItem.cs" />
-    <Compile Include="Game\Items\Weapon.cs" />
-    <Compile Include="Game\Services\CombatService.cs" />
-    <Compile Include="Game\Services\EnemyFactory.cs" />
-    <Compile Include="Game\Services\EventGeneratorService.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="Game\Views\MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\Views\GameView.xaml.cs">
+      <DependentUpon>GameView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Game\Views\GameOverView.xaml.cs">
+      <DependentUpon>GameOverView.xaml</DependentUpon>
+    </Compile>
+    <!-- Abilities -->
+    <Compile Include="Game\Abilities\ISpecialAbility.cs" />
+    <Compile Include="Game\Abilities\AttackContext.cs" />
+    <Compile Include="Game\Abilities\ArmorPiercingAbility.cs" />
+    <Compile Include="Game\Abilities\CriticalHitAbility.cs" />
+    <Compile Include="Game\Abilities\FreezeAbility.cs" />
+    <!-- Entities -->
+    <Compile Include="Game\Entities\Entity.cs" />
+    <Compile Include="Game\Entities\Enemy.cs" />
+    <Compile Include="Game\Entities\Player.cs" />
+    <Compile Include="Game\Entities\Goblin.cs" />
+    <Compile Include="Game\Entities\Mage.cs" />
+    <Compile Include="Game\Entities\Skeleton.cs" />
+    <Compile Include="Game\Entities\IFreezable.cs" />
+    <Compile Include="Game\Entities\Bosses\Boss.cs" />
+    <Compile Include="Game\Entities\Bosses\VVG.cs" />
+    <Compile Include="Game\Entities\Bosses\Kovalsky.cs" />
+    <Compile Include="Game\Entities\Bosses\ArchimageCPP.cs" />
+    <Compile Include="Game\Entities\Bosses\PestovCMM.cs" />
+    <!-- Items -->
+    <Compile Include="Game\Items\IItem.cs" />
+    <Compile Include="Game\Items\IEquipment.cs" />
+    <Compile Include="Game\Items\IConsumable.cs" />
+    <Compile Include="Game\Items\Armor.cs" />
+    <Compile Include="Game\Items\Weapon.cs" />
+    <Compile Include="Game\Items\HealthPotion.cs" />
+    <!-- Services -->
+    <Compile Include="Game\Services\EventGeneratorService.cs" />
+    <Compile Include="Game\Services\EnemyFactory.cs" />
+    <Compile Include="Game\Services\LootService.cs" />
+    <Compile Include="Game\Services\NavigationService.cs" />
+    <Compile Include="Game\Services\CombatService.cs" />
+    <!-- ViewModels -->
+    <Compile Include="Game\ViewModels\RelayCommand.cs" />
+    <Compile Include="Game\ViewModels\MainMenuViewModel.cs" />
+    <Compile Include="Game\ViewModels\GameViewModel.cs" />
+    <Compile Include="Game\ViewModels\GameOverViewModel.cs" />
+    <!-- Properties -->
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -109,20 +167,30 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="MyProject_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Game\ViewModels\" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

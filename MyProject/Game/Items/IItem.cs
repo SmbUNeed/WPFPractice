@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyProject.Game.Items
 {
-    internal interface IItem
+    public interface IItem
     {
         string Name { get; }
     }

@@ -23,6 +23,8 @@ namespace MyProject
         public MainWindow()
         {
             InitializeComponent();
+            Game.Services.NavigationService.Instance.NavigateTo += vm => DataContext = vm;
+            Game.Services.NavigationService.Instance.Navigate(new Game.ViewModels.MainMenuViewModel());
         }
     }
 }

@@ -1,13 +1,11 @@
-﻿using MyProject.Game.Entities.Bosses;
+﻿using MyProject.Game.Abilities;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
-namespace MyProject.Game.Abilities
+namespace MyProject.Game.Entities.Bosses
 {
     internal class PestovCMM : Boss
     {

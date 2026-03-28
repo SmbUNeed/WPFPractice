@@ -7,23 +7,27 @@ using MyProject.Game.Abilities;
 
 namespace MyProject.Game
 {
-    internal abstract class Enemy : Entity
+    public abstract class Enemy : Entity
     {
-        public int Armor;
-        public int Damage;
-        public ISpecialAbility SpecialAbility;
+        public int Armor { get; set; }
+        public int Damage { get; set; }
+        public IEnumerable<ISpecialAbility> Abilities { get; protected set; }
 
         public Enemy(int maxHp, int armor, int damage)
         {
             MaxHp = maxHp;
+            Hp    = maxHp;
             Armor = armor;
             Damage = damage;
         }
 
         public AttackContext ResolveAttack(Random random)
         {
-            var ctx = new AttackContext();
-            SpecialAbility.Apply(ctx, random);
+            var ctx = new AttackContext { Damage = this.Damage };
+            foreach (var ability in Abilities)
+            {
+                ability.Apply(ctx, random);
+            }
             return ctx;
         }
     }

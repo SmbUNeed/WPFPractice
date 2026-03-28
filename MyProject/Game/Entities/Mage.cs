@@ -11,7 +11,8 @@ namespace MyProject.Game
     {
         public Mage(int maxHp=25, int armor=2, int damage=15) : base(maxHp, armor, damage)
         {
-            SpecialAbility = new FreezeAbility();
+            Name = "Маг";
+            Abilities = new List<ISpecialAbility> { new FreezeAbility() };
         }
     }
 }
