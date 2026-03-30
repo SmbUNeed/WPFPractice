@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A95B664E-AB43-4402-B883-440D5F0CAAE0}</ProjectGuid>
+    <ProjectGuid>{BFB40626-61B2-99D6-4B1E-D76B0C91E446}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>MyProject</RootNamespace>
     <AssemblyName>MyProject</AssemblyName>
@@ -63,6 +63,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Backend\User.cs" />
+    <Compile Include="Roles\Admin.cs" />
+    <Compile Include="Roles\Client.cs" />
+    <Compile Include="Roles\Manager.cs" />
+    <Compile Include="Roles\Master.cs" />
+    <Compile Include="Roles\RightType.cs" />
+    <Compile Include="Roles\IRole.cs" />
+    <Compile Include="Roles\RoleType.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -94,5 +102,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
