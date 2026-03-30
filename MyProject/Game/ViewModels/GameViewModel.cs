@@ -17,6 +17,8 @@ namespace MyProject.Game.ViewModels
         public int PlayerMaxHp => _combatService.Player.MaxHp;
         public string CurrentWeapon => _combatService.Player.CurrentWeapon?.Name ?? "—";
         public string CurrentArmor => _combatService.Player.CurrentArmor?.Name ?? "—";
+        public int CurrentDamage => _combatService.Player.CurrentWeapon?.BaseDamage ?? 0;
+        public int CurrentArmorNumber => _combatService.Player.CurrentArmor?.ArmorNumber ?? 0;
         public bool IsPlayerFrozen => _combatService.Player.IsFrozen;
 
         private int _currentFloor;
@@ -152,6 +154,8 @@ namespace MyProject.Game.ViewModels
             OnPropertyChanged(nameof(PlayerMaxHp));
             OnPropertyChanged(nameof(CurrentWeapon));
             OnPropertyChanged(nameof(CurrentArmor));
+            OnPropertyChanged(nameof(CurrentDamage));
+            OnPropertyChanged(nameof(CurrentArmorNumber));
             OnPropertyChanged(nameof(IsPlayerFrozen));
 
             // Удаляем мёртвых врагов из UI-коллекции (CombatService уже убрал их из своего списка)

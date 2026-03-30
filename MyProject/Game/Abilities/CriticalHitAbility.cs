@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyProject.Game.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace MyProject.Game.Abilities
 {
     public sealed class CriticalHitAbility : ISpecialAbility
     {
-        private readonly double _chance;
+        public readonly double _chance;
         private readonly double _multiplier;
 
         public CriticalHitAbility(double chance = 0.20, double multiplier = 2)

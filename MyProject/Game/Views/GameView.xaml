@@ -262,12 +262,18 @@
                                 <TextBlock Text="{Binding CurrentWeapon}" Foreground="#f0c070"
                                            FontSize="11" FontWeight="Bold" TextAlignment="Center"
                                            TextWrapping="Wrap" MaxWidth="80"/>
+                                <TextBlock Text="{Binding CurrentDamage}" Foreground="#f0c070"
+                                           FontSize="11" FontWeight="Bold" TextAlignment="Center"
+                                           TextWrapping="Wrap" MaxWidth="80"/>
                             </StackPanel>
                         </Border>
                         <Border Background="#0f3460" CornerRadius="6" Padding="10,6">
                             <StackPanel>
                                 <TextBlock Text="&#x1F6E1;" FontSize="18" TextAlignment="Center"/>
                                 <TextBlock Text="{Binding CurrentArmor}" Foreground="#7ec8e3"
+                                           FontSize="11" FontWeight="Bold" TextAlignment="Center"
+                                           TextWrapping="Wrap" MaxWidth="80"/>
+                                <TextBlock Text="{Binding CurrentArmorNumber}" Foreground="#7ec8e3"
                                            FontSize="11" FontWeight="Bold" TextAlignment="Center"
                                            TextWrapping="Wrap" MaxWidth="80"/>
                             </StackPanel>
