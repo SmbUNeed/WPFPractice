@@ -63,6 +63,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Windows\FilterModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -74,6 +78,8 @@
     <Compile Include="Backend\Access.cs" />
     <Compile Include="Backend\Auth.cs" />
     <Compile Include="Backend\VisualModal.cs" />
+    <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Converters\DiscountToBackgroundConverter.cs" />
     <Compile Include="Data\Appointments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -158,6 +164,11 @@
     </Compile>
     <Compile Include="Pages\ProductsPage.xaml.cs">
       <DependentUpon>ProductsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Service\CartService.cs" />
+    <Compile Include="ViewModels\ProductCartViewModel.cs" />
+    <Compile Include="Windows\FilterModal.xaml.cs">
+      <DependentUpon>FilterModal.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -267,5 +278,6 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -30,5 +30,10 @@ namespace MyProject.Pages
         {
             if (Auth.Authorize(LoginBox.Text, PasswordBox.Text)) NavigationService.Navigate(new MainPage());
         }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RegistrationPage());
+        }
     }
 }

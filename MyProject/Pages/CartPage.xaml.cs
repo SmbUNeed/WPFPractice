@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyProject.Backend;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,13 @@ namespace MyProject.Pages
         public CartPage()
         {
             InitializeComponent();
+            if (!Auth.IsAuthenticated) 
+            { 
+                NavigationService.Navigate(new LoginPage());
+                return;
+            }
+
+
         }
     }
 }

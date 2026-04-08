@@ -3,12 +3,83 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:converters="clr-namespace:MyProject.Converters"
       xmlns:local="clr-namespace:MyProject.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProductsPage">
-
+    <Page.Resources>
+        <converters:DiscountToBackgroundConverter x:Key="DiscountConverter"/>
+    </Page.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Height="25" Orientation="Horizontal" HorizontalAlignment="Center">
+            <TextBlock Text="Поиск по названию:" FontSize="10" Foreground="Gray" VerticalAlignment="Center" Margin="5"/>
+            <TextBox x:Name="SearchBox" ToolTip="Поиск по названию" Width="300" TextChanged="SearchBox_TextChanged"/>
+            <Button Content="Фильтры" Click="FilterButton_Click"/>
+            <Button x:Name="CartButton" Content="Корзина" Click="CartButton_Click"/>
+        </StackPanel>
+
+        <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="ProductsListBox">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border Background="{Binding Product.Sale, Converter={StaticResource DiscountConverter}}" 
+                            Height="250" Width="150" CornerRadius="8" Margin="5">
+                        <StackPanel Height="250" Width="150">
+                            <Image Height="180" Width="120" Source="{Binding Product.ImagePath}"/>
+                            <TextBlock TextAlignment="Center" Text="{Binding Product.Name}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="5" Text="{Binding Product.Rate, StringFormat={}{0} ★  |}"/>
+                                <TextBlock Margin="5" Text="{Binding Product.Price, StringFormat={}{0} руб.}"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                                <Button Content="В корзину" Height="20"
+                                        Command="{Binding AddToCartCommand}">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsInCart}" Value="True">
+                                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsInCart}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+                                    <Button Content="−" Width="30" Height="20" Command="{Binding DecreaseCommand}"/>
+                                    <TextBlock Text="{Binding Quantity}" Width="30"
+                                               TextAlignment="Center" VerticalAlignment="Center"/>
+                                    <Button Content="+" Width="30" Height="20" Command="{Binding IncreaseCommand}"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
     </Grid>
 </Page>

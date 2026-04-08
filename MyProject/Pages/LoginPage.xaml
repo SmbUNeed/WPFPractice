@@ -25,7 +25,11 @@
             <TextBox x:Name="LoginBox"/>
             <TextBlock Text="Пароль"/>
             <TextBox x:Name="PasswordBox"/>
-            <Button Content="Войти" HorizontalAlignment="Center" Click="LoginButton_Click"/>
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Войти" Width="100" Click="LoginButton_Click"/>
+                <TextBlock Width="65"/>
+                <Button Content="Нет аккаунта?" Width="100"  Click="RegisterButton_Click"/>
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Page>
