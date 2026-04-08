@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MyProject.Roles;
 
-namespace MyProject.Backend
+namespace MyProject.Data
 {
-    public class User 
+    internal class Core
     {
-        public string FullName;
-        IRole Role;
+        public static CosmeticsLogeEntities Context = new CosmeticsLogeEntities();
     }
 }

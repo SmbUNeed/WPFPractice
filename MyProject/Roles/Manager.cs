@@ -8,14 +8,14 @@ namespace MyProject.Roles
 {
     public class Manager : IRole
     {
-        public string Name { get; set; } = "manager";
-        public RoleType RoleType { get; set; } = RoleType.Manager;
-        public List<RightType> Rights { get; set; } = new List<RightType>
+        public string Name { get; } = "manager";
+        public RoleType RoleType { get; } = RoleType.Manager;
+        public List<RightType> Rights { get; } = new List<RightType>
         {
-            RightType.CreateSign,
+            RightType.CreateAppointment,
             RightType.ViewAndGiveOrders,
-            RightType.CarrySign,
-            RightType.CancelSign,
+            RightType.CarryAppointment,
+            RightType.CancelAppointment,
             RightType.AddCosmeticSales,
             RightType.AddCosmeticStock,
             RightType.ChangeCosmeticStock,
@@ -27,6 +27,5 @@ namespace MyProject.Roles
             RightType.AddServiceType,
             RightType.ChangeServiceType
         };
-        
     }
 }

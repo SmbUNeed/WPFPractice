@@ -8,9 +8,9 @@ namespace MyProject.Roles
 {
     public class Admin : IRole
     {
-        public string Name { get; set; } = "admin";
-        public RoleType RoleType { get; set; } = RoleType.Admin;
-        public List<RightType> Rights { get; set; } = new List<RightType>
+        public string Name { get; } = "admin";
+        public RoleType RoleType { get; } = RoleType.Admin;
+        public List<RightType> Rights { get; } = new List<RightType>
         {
             RightType.ChangeUsers,
             RightType.AddUsers,

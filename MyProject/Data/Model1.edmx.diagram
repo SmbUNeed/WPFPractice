@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ae5b1eb879e141079c6af76b5af12303" Name="Diagram1">
+        <EntityTypeShape EntityType="CosmeticsLogeModel.Appointments" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.Cart" Width="1.5" PointX="11.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.Manufacturers" Width="1.5" PointX="3.75" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.MastersTime" Width="1.5" PointX="8.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.Orders" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.PaymentMethods" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.Products" Width="1.5" PointX="6" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.ProductTypes" Width="1.5" PointX="3.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.Roles" Width="1.5" PointX="0.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.RolesPermissions" Width="1.5" PointX="3" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.Services" Width="1.5" PointX="3.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.Users" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_Appointments_Services" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_Appointments_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_Appointments_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_Cart_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_Cart_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_Products_Manufacturers" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_MastersTime_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_Orders_PaymentMethods" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_Orders_Products" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_Orders_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_Products_ProductTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_RolesPermissions_Roles1" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.FK_Users_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="CosmeticsLogeModel.MasterServices" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

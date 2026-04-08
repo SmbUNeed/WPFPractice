@@ -8,12 +8,12 @@ namespace MyProject.Roles
 {
     public class Master : IRole
     {
-        public string Name { get; set; } = "master";
-        public RoleType RoleType { get; set; } = RoleType.Master;
-        public List<RightType> Rights { get; set; } = new List<RightType>
+        public string Name { get; } = "master";
+        public RoleType RoleType { get; } = RoleType.Master;
+        public List<RightType> Rights { get; } = new List<RightType>
         {
-            RightType.SignOnMe,
-            RightType.CompleteMarkSign,
+            RightType.AppointmentsOnMe,
+            RightType.CompleteAppointment,
             RightType.ChooseServiceType,
         };
     }

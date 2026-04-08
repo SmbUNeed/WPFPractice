@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="BackButton" DockPanel.Dock="Top" Content="← Назад"
+                Click="BackButton_Click"
+                Visibility="{Binding CanGoBack}" Width="70" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10"/>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

@@ -9,15 +9,14 @@ namespace MyProject.Roles
     public class Client : IRole
     {
         
-        public string Name { get; set; } = "client";
-        public RoleType RoleType { get; set; } = RoleType.Client;
-        public List<RightType> Rights { get; set; } = new List<RightType>
+        public string Name { get; } = "client";
+        public RoleType RoleType { get; } = RoleType.Client;
+        public List<RightType> Rights { get; } = new List<RightType>
         {   
-            RightType.Sign,
+            RightType.Appoint,
             RightType.OrderCosmetic,
-            RightType.ViewMyOrdersAndSign,
-            RightType.ViewMySign,
+            RightType.ViewMyOrders,
+            RightType.ViewMyAppointments,
         };
-        
     }
 }

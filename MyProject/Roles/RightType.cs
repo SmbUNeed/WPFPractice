@@ -8,19 +8,19 @@ namespace MyProject.Roles
 {
     public enum RightType
     {
-        Sign,
+        Appoint,
         OrderCosmetic,
-        ViewMyOrdersAndSign,
-        ViewMySign,
+        ViewMyOrders,
+        ViewMyAppointments,
 
-        SignOnMe,
-        CompleteMarkSign,
+        AppointmentsOnMe,
+        CompleteAppointment,
         ChooseServiceType,
 
-        CreateSign,
+        CreateAppointment,
         ViewAndGiveOrders,
-        CarrySign,
-        CancelSign,
+        CarryAppointment,
+        CancelAppointment,
         AddCosmeticSales,
         AddCosmeticStock,
         ChangeCosmeticStock,

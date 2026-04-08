@@ -9,9 +9,8 @@ namespace MyProject.Roles
 {
     public interface IRole
     {
-        string Name { get; set; }
-        RoleType RoleType { get; set; }
-        List<RightType> Rights { get; set; }
+        string Name { get; }
+        RoleType RoleType { get; }
+        List<RightType> Rights { get; }
     }
-
 }

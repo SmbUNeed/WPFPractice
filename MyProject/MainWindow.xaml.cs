@@ -12,17 +12,31 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MyProject.Pages;
 
 namespace MyProject
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
+    // MainWindow.xaml.cs
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            MainFrame.Navigated += (s, e) => {
+                BackButton.Visibility = MainFrame.CanGoBack
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+            };
+            MainFrame.Navigate(new MainPage());
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (MainFrame.CanGoBack)
+                MainFrame.GoBack();
         }
     }
 }
