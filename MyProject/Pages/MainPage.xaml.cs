@@ -45,6 +45,7 @@ namespace MyProject.Pages
             ListBoxMasters.ItemsSource = ListMasters;
             ListBoxServices.ItemsSource = Services;
             FilterComboBox.SelectedIndex = 0;
+            SwitchRoleCombobox.ItemsSource = Core.Context.Roles.ToList();
         }
 
         private void FilterComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -93,6 +94,14 @@ namespace MyProject.Pages
                 else
                     ListBoxServices.ItemsSource = Services.Where(s => s.Name.ToLower().Contains(searchText)).ToList();
             }
+        }
+
+        private void SwitchRoleCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int roleId = (e.AddedItems[0] as Roles).Id;
+            Users user = Core.Context.Users.FirstOrDefault(u => u.Roles.Id == roleId);
+            Auth.Authorize(user.Login, user.Password);
+            Initialize();
         }
     }
 }

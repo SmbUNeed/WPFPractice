@@ -32,7 +32,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <TextBlock Text="Комментарий"/>
+            <TextBlock x:Name="ComTB" Text="Комментарий"/>
             <TextBox x:Name="FeedbackTextBox" Height="54"/>
             
             <Button Content="Записаться" HorizontalAlignment="Center" Click="AppointButton_Click"/>

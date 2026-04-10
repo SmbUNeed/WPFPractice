@@ -56,6 +56,9 @@ namespace MyProject.Pages
             MasterTextBlock.Text = $"Мастер: {_appointment.Users1.Fullname}";
             DateTimeTextBlock.Text = $"Дата: {_appointment.DateTime}";
             PaymentMethodCombobox.ItemsSource = Core.Context.PaymentMethods.ToList();
+            Visibility fbVisibility = Auth.CurrentUser.Roles.Name != "Client" ? Visibility.Visible : Visibility.Hidden;
+            ComTB.Visibility = fbVisibility;
+            FeedbackTextBox.Visibility = fbVisibility;
         }
     }
 }

@@ -22,6 +22,13 @@
             <TextBox x:Name="SearchTextBox" Width="300" Margin="5" TextChanged="SearchTextBox_TextChanged"/>
             <Button x:Name="AccountButton" Width="70" Margin="5"/>
             <Button Width="70" Margin="5" Content="Товары" Click="ProductsButton_Click"/>
+            <ComboBox x:Name="SwitchRoleCombobox" Width="70" Margin="5" SelectionChanged="SwitchRoleCombobox_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
         </StackPanel>
         <ListBox Grid.Row="1" x:Name="ListBoxMasters" SelectionChanged="ListBoxMasters_SelectionChanged">
             <ListBox.ItemTemplate>
