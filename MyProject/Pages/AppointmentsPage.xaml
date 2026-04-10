@@ -19,13 +19,13 @@
             <DatePicker x:Name="DateFilter" SelectedDateChanged="DateFilter_SelectedDateChanged"/>
         </StackPanel>
 
-        <ListView Grid.Row="1" x:Name="AppointmentsList" Margin="10">
+        <ListView Grid.Row="1" x:Name="AppointmentsList" Margin="10" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding Date, StringFormat=dd.MM.yyyy}" Width="120"/>
-                    <GridViewColumn Header="Время" DisplayMemberBinding="{Binding Date, StringFormat=HH:mm}" Width="80"/>
+                    <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding DateTime.Date, StringFormat=dd.MM.yyyy}" Width="120"/>
+                    <GridViewColumn Header="Время" DisplayMemberBinding="{Binding DateTime, StringFormat=HH:mm}" Width="80"/>
                     <GridViewColumn Header="Услуга" DisplayMemberBinding="{Binding Services.Name}" Width="160"/>
-                    <GridViewColumn Header="Мастер" DisplayMemberBinding="{Binding Users.FullName}" Width="160"/>
+                    <GridViewColumn Header="Мастер" DisplayMemberBinding="{Binding Users1.Fullname}" Width="200"/>
                     <GridViewColumn Header="" Width="120">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

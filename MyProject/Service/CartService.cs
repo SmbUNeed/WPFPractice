@@ -13,8 +13,6 @@ namespace MyProject.Service
         public static CartService Instance { get; } = new CartService();
 
         public event Action CartChanged;
-
-        // Текущий пользователь — подставь как ты его хранишь
         private int CurrentUserId => Auth.CurrentUser.Id;
 
         public int GetQuantity(int productId)
@@ -65,6 +63,20 @@ namespace MyProject.Service
             else
                 item.Quantity--;
 
+            Core.Context.SaveChanges();
+            CartChanged?.Invoke();
+        }
+
+        public void Delete(int productId)
+        {
+            if (!Auth.IsAuthenticated) return;
+
+            var item = Core.Context.Cart
+                .FirstOrDefault(c => c.UserId == CurrentUserId && c.ProductId == productId);
+
+            if (item == null) return;
+
+            Core.Context.Cart.Remove(item);
             Core.Context.SaveChanges();
             CartChanged?.Invoke();
         }

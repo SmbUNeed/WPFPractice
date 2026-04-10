@@ -3,12 +3,57 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:converters="clr-namespace:MyProject.Converters"
       xmlns:local="clr-namespace:MyProject.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CartPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <ListBox Grid.Row="1" Grid.Column="0" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="ProductsListBox" SelectionChanged="ProductsListBox_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Height="250" Width="150">
+                        <Image Height="180" Width="120" Source="{Binding Product.ImagePath}"/>
+                        <TextBlock TextAlignment="Center" Text="{Binding Product.Name}"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Margin="5" Text="{Binding Product.Rate, StringFormat={}{0} ★  |}"/>
+                            <TextBlock Margin="5" Text="{Binding Product.Price, StringFormat={}{0} руб.}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <StackPanel.Style>
+                                    <Style TargetType="StackPanel">
+                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsInCart}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </StackPanel.Style>
+                                <Button Content="−" Width="30" Height="20" Command="{Binding DecreaseCommand}"/>
+                                <TextBlock Text="{Binding Quantity}" Width="30"
+                                       TextAlignment="Center" VerticalAlignment="Center"/>
+                                <Button Content="+" Width="30" Height="20" Command="{Binding IncreaseCommand}"/>
+                                <Button Content="🗑️" Background="DarkRed" Width="20" Height="20" Command="{Binding DeleteCommand}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+
+        <Button Grid.Column="1" Width="Auto" Height="30" Content="Заказать" Click="OrderButton_Click" VerticalAlignment="Center" Margin="10"/>
     </Grid>
 </Page>

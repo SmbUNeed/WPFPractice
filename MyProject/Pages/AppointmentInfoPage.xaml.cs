@@ -19,55 +19,43 @@ namespace MyProject.Pages
 {
     public partial class AppointmentInfoPage : Page
     {
-        MastersTime _masterTime;
-        Services _service;
-        public AppointmentInfoPage(MastersTime mt, Services service)
+        Appointments _appointment;
+        public AppointmentInfoPage(Appointments appointment)
         {
             InitializeComponent();
-            FillValues(mt, service);
+            _appointment = appointment;
+            FillValues(appointment);
         }
 
         private void AppointButton_Click(object sender, RoutedEventArgs e)
         {
-            int? paymentMethodId = (PaymentMethodCombobox.SelectedItem as PaymentMethods)?.Id;
-
-            if ( VisualModal.MessageIfFalse(paymentMethodId == null, "Выберите способ оплаты"))
+            if (!VisualModal.MessageIfFalse(PaymentMethodCombobox.SelectedItem != null, "Выберите способ оплаты")) return;
+            int paymentMethodId = (PaymentMethodCombobox.SelectedItem as PaymentMethods).Id;
+            try
             {
-                try
+                string fb = FeedbackTextBox.Text;
+                _appointment.PaymentMethodId = paymentMethodId;
+                _appointment.Feedback = string.IsNullOrEmpty(fb) ? null : fb;
+                    
+                if (Auth.AppointClient(_appointment))
                 {
-                    Appointments appoinment = new Appointments
-                    {
-                        UserId = Auth.CurrentUser.Id,
-                        MasterId = _masterTime.MasterId,
-                        ServiceId = _service.Id,
-                        Status = "Booked",
-                        DateTime = _masterTime.DateTime,
-                        CreatedAt = DateTime.Now,
-                        Feedback = FeedbackTextBox.Text,
-                    };
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    return;
-                }
-                finally
-                {
-                    Core.Context.MastersTime.First(mt => mt.Id == _masterTime.Id).Status = "Booked";
-                    Core.Context.SaveChanges();
+                    MessageBox.Show("Запись успешно зарегистрирована");
                     NavigationService.Navigate(Access.HomePage());
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
         }
 
-        private void FillValues(MastersTime mt, Services service)
+        private void FillValues(Appointments appointment)
         {
-            _masterTime = mt;
-            _service = service;
-            AppointmentNameTextBlock.Text = $"Услуга: {service.Name}";
-            MasterTextBlock.Text = $"Мастер: {mt.Users.Fullname}";
-            DateTimeTextBlock.Text = $"Дата: {mt.DateTime}";
-            PaymentMethodCombobox.ItemsSource = Core.Context.PaymentMethods;
+            AppointmentNameTextBlock.Text = $"Услуга: {_appointment.Services.Name}";
+            MasterTextBlock.Text = $"Мастер: {_appointment.Users1.Fullname}";
+            DateTimeTextBlock.Text = $"Дата: {_appointment.DateTime}";
+            PaymentMethodCombobox.ItemsSource = Core.Context.PaymentMethods.ToList();
         }
     }
 }

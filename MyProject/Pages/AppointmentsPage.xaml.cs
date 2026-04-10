@@ -39,22 +39,30 @@ namespace MyProject.Pages
             {
                 FilterService = (Services)filter;
             }
+            DateFilter.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1)));
+            DateFilter.BlackoutDates.Add(new CalendarDateRange(Core.Context.Appointments.Max(mt => mt.DateTime).AddDays(1), DateTime.MaxValue));
         }
 
         private void LoadAppointments()
         {
-            var query = Core.Context.MastersTime
-                .Where(a => a.Status == "Free")
-                ;
+            var query = Core.Context.Appointments
+                .Where(a => a.Status == "Free" && a.DateTime >= DateTime.Now);
 
             if (FilterMaster != null)
-                query = query.Where(a => a.MasterId == FilterMaster.Id);
+            {
+                query = query.Where(q => q.MasterId == FilterMaster.Id);
+            }
 
             if (FilterService != null)
-                query = query.Where(a => a.Users.Services.Any(s => s == FilterService)).Include(Services => FilterService);
+            {
+                query = query.Where(q => q.Services.Id == FilterService.Id);
+            }
 
             if (DateFilter.SelectedDate.HasValue)
-                query = query.Where(a => a.DateTime.Date == DateFilter.SelectedDate.Value.Date);
+            {
+                DateTime nextDay = DateFilter.SelectedDate.Value.AddDays(1);
+                query = query.Where(q => q.DateTime >= DateFilter.SelectedDate.Value && q.DateTime < nextDay);
+            }
 
             AppointmentsList.ItemsSource = query.ToList();
         }
@@ -65,9 +73,14 @@ namespace MyProject.Pages
 
         private void BookButton_Click(object sender, RoutedEventArgs e)
         {
+            if (!Auth.IsAuthenticated)
+            {
+                MessageBox.Show("Войдити, прежде чем записаться на услугу");
+                NavigationService.Navigate(new LoginPage());
+                return;
+            }
             var appointment = (Appointments)((Button)sender).Tag;
-            appointment.UserId = Auth.CurrentUser.Id;
-            Core.Context.SaveChanges();
+            NavigationService.Navigate(new AppointmentInfoPage(appointment));
             LoadAppointments();
         }
     }

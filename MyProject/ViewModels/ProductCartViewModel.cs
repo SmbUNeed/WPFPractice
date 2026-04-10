@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace MyProject.ViewModels
 {
-    internal class ProductCartViewModel : INotifyPropertyChanged
+    public class ProductCartViewModel : INotifyPropertyChanged
     {
         private readonly CartService _cart = CartService.Instance;
 
@@ -23,6 +23,7 @@ namespace MyProject.ViewModels
         public ICommand AddToCartCommand { get; }
         public ICommand IncreaseCommand { get; }
         public ICommand DecreaseCommand { get; }
+        public ICommand DeleteCommand { get; }
 
         public ProductCartViewModel(Products product)
         {
@@ -45,6 +46,11 @@ namespace MyProject.ViewModels
 
             DecreaseCommand = new RelayCommand(
                 execute: _ => _cart.Remove(Product.Id),
+                canExecute: _ => IsAuthorized
+            );
+
+            DeleteCommand = new RelayCommand(
+                execute: _ => _cart.Delete(Product.Id),
                 canExecute: _ => IsAuthorized
             );
         }

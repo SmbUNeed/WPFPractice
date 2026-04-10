@@ -24,9 +24,9 @@
             <ListBox x:Name="MyAppointmentsListBox">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" CanHorizontallyScroll="False">
                             <TextBlock Width="100" Text="{Binding DateTime}"/>
-                            <TextBlock Width="150" Text="{Binding Users1.FullName}"/>
+                            <TextBlock Width="150" Text="{Binding Users1.Fullname}"/>
                             <TextBlock Width="150" Text="{Binding Services.Name}"/>
                         </StackPanel>
                     </DataTemplate>
@@ -34,15 +34,27 @@
             </ListBox>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <TextBlock Text="Записи" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
+            <TextBlock Text="Заказы" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"/>
             <ListBox x:Name="MyOrdersListBox">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Width="100" Text="{Binding CreatedAt}"/>
-                            <TextBlock Width="200" Text="{Binding Products.Name}"/>
-                            <TextBlock Width="100" Text="{Binding DeliveryDate}"/>
-                        </StackPanel>
+                        <Border>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Width="100" Text="{Binding CreatedAt}"/>
+                                <ListBox ItemsSource="{Binding OrderProducts}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Products.Name}" Width="100"/>
+                                                <TextBlock Text="{Binding Quantity, StringFormat={}{0} шт.}" Width="100"/>
+                                            </StackPanel>
+                                            
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                <TextBlock Width="100" Text="{Binding DeliveryDate}"/>
+                            </StackPanel>
+                        </Border>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>

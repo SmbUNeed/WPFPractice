@@ -25,7 +25,7 @@ namespace MyProject.Pages
     {
         Manufacturers _manufacturerFilter;
         ProductTypes _productTypeFilter;
-        List<Products> Products => Core.Context.Products.OrderBy(p => p.Rate).ToList();
+        IEnumerable<Products> Products => Core.Context.Products.OrderBy(p => p.Rate);
         public ProductsPage()
         {
             InitializeComponent();
@@ -47,18 +47,13 @@ namespace MyProject.Pages
                 _manufacturerFilter = filterModal.ManufacturersComboBox.SelectedItem as Manufacturers;
                 _productTypeFilter = filterModal.ProductTypesComboBox.SelectedItem as ProductTypes;
 
-                ProductsListBox.ItemsSource = GetFiltered();
+                ProductsListBox.ItemsSource = GetViewModels(GetFiltered());
             }
         }
 
         private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             ProductsListBox.ItemsSource = GetViewModels(GetFiltered()).Where(p => p.Product.Name.ToLower().Contains(SearchBox.Text.ToLower()));
-        }
-
-        private void Product_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void CartButton_Click(object sender, RoutedEventArgs e)
@@ -71,6 +66,12 @@ namespace MyProject.Pages
             return Products.Where(p =>
                 _manufacturerFilter == null ? true : p.ManufacturerId == _manufacturerFilter.Id &&
                 _productTypeFilter == null ? true : p.ProductTypeId == _productTypeFilter.Id).ToList();
+        }
+
+        private void ProductsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ProductCartViewModel pcvm = e.AddedItems[0] as ProductCartViewModel;
+            NavigationService.Navigate(new ProductInfoPage(pcvm));
         }
     }
 }

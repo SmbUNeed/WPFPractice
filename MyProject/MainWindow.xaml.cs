@@ -36,7 +36,10 @@ namespace MyProject
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             if (MainFrame.CanGoBack)
+            {
                 MainFrame.GoBack();
+                if (MainFrame.Content is MainPage) MainFrame.Navigate(new MainPage());
+            }
         }
     }
 }

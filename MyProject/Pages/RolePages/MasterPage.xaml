@@ -9,6 +9,48 @@
       Title="MasterPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel>
+            <TextBlock Text="Мои записи" FontSize="20" HorizontalAlignment="Center"/>
+            <ListBox x:Name="MeAppointments" SelectionChanged="MeAppointments_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <StackPanel>
+                                <TextBlock Text="{Binding DateTime}"/>
+                                <TextBlock Text="{Binding Services.Name}"/>
+                                <TextBlock Text="{Binding Users.Fullname}"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="Мои услуги" FontSize="20" HorizontalAlignment="Center"/>
+            <ListBox x:Name="MyServices">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="2">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Name}" Width="100"/>
+                                <Button Content="-" Width="20" Height="20" Click="RemoveServiceButton_Click"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <TextBlock Text="Добавить услугу"/>
+            <ComboBox x:Name="ServicesComboBox" SelectionChanged="ServicesComboBox_SelectionChanged">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </Page>

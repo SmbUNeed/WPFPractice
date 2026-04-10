@@ -19,7 +19,7 @@
                 <ComboBoxItem Content="По мастеру" />
                 <ComboBoxItem Content="По услуге"/>
             </ComboBox>
-            <TextBox x:Name="SearchTextBox" Width="300" Margin="5"/>
+            <TextBox x:Name="SearchTextBox" Width="300" Margin="5" TextChanged="SearchTextBox_TextChanged"/>
             <Button x:Name="AccountButton" Width="70" Margin="5"/>
             <Button Width="70" Margin="5" Content="Товары" Click="ProductsButton_Click"/>
         </StackPanel>

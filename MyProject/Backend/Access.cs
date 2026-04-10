@@ -22,15 +22,14 @@ namespace MyProject.Backend
         {
             if (Auth.CurrentUser == null)
             {
-                MessageBox.Show("Нет входа в аккаунт", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                return new MainPage();
+                return new LoginPage();
             }
             switch (Auth.CurrentUser.Roles.Name)
             {
                 case "Client": return new CabinetPage();
-                case "Master": return new CabinetPage();
-                case "Manager": return new CabinetPage();
-                case "Admin": return new CabinetPage();
+                case "Master": return new MasterPage();
+                case "Manager": return new ManagerPage();
+                case "Admin": return new AdminPage();
                 default: 
                     MessageBox.Show("Неизвестная роль", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     return new MainPage();

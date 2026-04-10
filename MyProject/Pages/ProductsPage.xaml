@@ -24,7 +24,7 @@
             <Button x:Name="CartButton" Content="Корзина" Click="CartButton_Click"/>
         </StackPanel>
 
-        <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="ProductsListBox">
+        <ListBox Grid.Row="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="ProductsListBox" SelectionChanged="ProductsListBox_SelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Border Background="{Binding Product.Sale, Converter={StaticResource DiscountConverter}}" 

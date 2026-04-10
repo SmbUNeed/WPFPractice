@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyProject.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +17,11 @@ using System.Windows.Shapes;
 namespace MyProject.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для SelectedAppointmentPage.xaml
+    /// Логика взаимодействия для ProductInfoPage.xaml
     /// </summary>
-    public partial class SelectedAppointmentPage : Page
+    public partial class ProductInfoPage : Page
     {
-        public SelectedAppointmentPage()
+        public ProductInfoPage(ProductCartViewModel productVM)
         {
             InitializeComponent();
         }

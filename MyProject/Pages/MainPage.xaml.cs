@@ -35,16 +35,12 @@ namespace MyProject.Pages
         {
             ListMasters = Core.Context.Users.Where(u => u.Roles.Name == "Master").ToDictionary(u => u, u => u.Services.ToList());
             Services = Core.Context.Services.ToList();
+            AccountButton.Click += (s, e) => NavigationService.Navigate(Access.HomePage());
+
             if (Auth.IsAuthenticated)
-            {
                 AccountButton.Content = "Личный кабинет";
-                NavigationService.Navigate(new CabinetPage());
-            }
-            else
-            {
+            else 
                 AccountButton.Content = "Войти";
-                AccountButton.Click += (s, e) => NavigationService.Navigate(new LoginPage());
-            }
 
             ListBoxMasters.ItemsSource = ListMasters;
             ListBoxServices.ItemsSource = Services;
@@ -72,7 +68,7 @@ namespace MyProject.Pages
 
         private void ListBoxMasters_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Users master = ((KeyValuePair <Users, List <Services>> )e.AddedItems[0]).Key;
+            Users master = ((KeyValuePair <Users, List <Services>>)e.AddedItems[0]).Key;
             NavigationService.Navigate(new AppointmentsPage(master));
         }
 
@@ -80,6 +76,23 @@ namespace MyProject.Pages
         {
             Services service = (Services)e.AddedItems[0];
             NavigationService.Navigate(new AppointmentsPage(service));
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string searchText = SearchTextBox.Text.ToLower();
+            if (string.IsNullOrEmpty(searchText))
+            {
+                ListBoxMasters.ItemsSource = ListMasters;
+                ListBoxServices.ItemsSource = Services;
+            }
+            else
+            {
+                if (ListBoxMasters.Visibility == Visibility.Visible) 
+                    ListBoxMasters.ItemsSource = ListMasters.Where(p => p.Key.Fullname.ToLower().Contains(searchText)).ToList();
+                else
+                    ListBoxServices.ItemsSource = Services.Where(s => s.Name.ToLower().Contains(searchText)).ToList();
+            }
         }
     }
 }

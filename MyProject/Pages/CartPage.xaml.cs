@@ -1,4 +1,7 @@
 ﻿using MyProject.Backend;
+using MyProject.Data;
+using MyProject.ViewModels;
+using MyProject.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,13 +27,26 @@ namespace MyProject.Pages
         public CartPage()
         {
             InitializeComponent();
-            if (!Auth.IsAuthenticated) 
-            { 
-                NavigationService.Navigate(new LoginPage());
-                return;
-            }
+            ProductsListBox.ItemsSource = GetViewModels(GetFiltered());
+        }
 
+        List<ProductCartViewModel> GetViewModels(IEnumerable<Products> products) =>
+    products.Select(p => new ProductCartViewModel(p)).ToList();
 
+        private IEnumerable<Products> GetFiltered()
+        {
+            List<Cart> cart = Core.Context.Cart.ToList();
+            return cart.Where(c => c.UserId == Auth.CurrentUser.Id).Select(c => c.Products).OrderBy(p => p.Rate);
+        }
+
+        private void ProductsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ProductCartViewModel pcvm = e.AddedItems[0] as ProductCartViewModel;
+            NavigationService.Navigate(new ProductInfoPage(pcvm));
+        }
+        private void OrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new OrderPage());
         }
     }
 }
