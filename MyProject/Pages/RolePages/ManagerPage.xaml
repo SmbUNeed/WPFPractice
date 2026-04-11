@@ -9,6 +9,275 @@
       Title="ManagerPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <DockPanel Grid.Row="0" Margin="120 8">
+            <TextBlock Text="Панель менеджера" FontSize="18" FontWeight="SemiBold"
+                       VerticalAlignment="Center" Margin="12 0"/>
+        </DockPanel>
+
+        <TabControl Grid.Row="1" Margin="8">
+
+            <TabItem Header="Записи">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+
+                    <DockPanel Grid.Column="0" Margin="8">
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 8">
+                            <Button Content="+ Создать" Margin="0"
+                                    Click="OpenCreateAppointment_Click"/>
+                            <Button Content="Перенести"
+                                    Click="RescheduleAppointment_Click"/>
+                            <Button Content="Отменить"
+                                    Click="CancelAppointment_Click"/>
+                            <DatePicker x:Name="AppointmentDateFilter" Width="150" Margin="16 0 0 0"
+                                        SelectedDateChanged="AppointmentDateFilter_Changed"/>
+                            <Button Content="Сбросить"
+                                    Click="ResetAppointmentFilter_Click"/>
+                        </StackPanel>
+                        <DataGrid x:Name="AppointmentsGrid" AutoGenerateColumns="False"
+                                  IsReadOnly="True" CanUserAddRows="False" SelectionMode="Single">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Дата и время" Binding="{Binding DateTime, StringFormat=dd.MM.yyyy HH:mm}" Width="140"/>
+                                <DataGridTextColumn Header="Клиент"       Binding="{Binding ClientName}"  Width="*"/>
+                                <DataGridTextColumn Header="Мастер"       Binding="{Binding MasterName}"  Width="*"/>
+                                <DataGridTextColumn Header="Услуга"       Binding="{Binding ServiceName}" Width="*"/>
+                                <DataGridTextColumn Header="Оплата"       Binding="{Binding PaymentName}" Width="120"/>
+                                <DataGridTextColumn Header="Статус"       Binding="{Binding Status}"      Width="100"/>
+                                <DataGridTextColumn Header="Отзыв"        Binding="{Binding Feedback}"    Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+
+                    <Border Grid.Column="1" BorderBrush="#E5E7EB" BorderThickness="1 0 0 0" Padding="12">
+                        <StackPanel x:Name="ReschedulePanel" Visibility="Collapsed">
+                            <TextBlock Text="Перенести запись" FontWeight="SemiBold" FontSize="14" Margin="0 0 0 12"/>
+                            <TextBlock Text="Новая дата"/>
+                            <DatePicker x:Name="NewDate"/>
+                            <TextBlock Text="Новое время"/>
+                            <ComboBox x:Name="NewTime" Margin="0 2 0 12"/>
+                            <Button Content="Сохранить" Margin="0 0 0 6"
+                                    Click="SaveReschedule_Click"/>
+                            <Button Content="Отмена" Margin="0"
+                                    Click="CloseReschedulePanel_Click"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Заказы">
+                <DockPanel Margin="8">
+                    <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 8">
+                        <Button Content="Закрыть заказ" Margin="0"
+                                Click="CloseOrder_Click"/>
+                        <ComboBox x:Name="OrderStatusFilter" Width="160" Margin="12 0 0 0"
+                                  SelectionChanged="OrderStatusFilter_Changed">
+                            <ComboBoxItem Content="Все" IsSelected="True"/>
+                            <ComboBoxItem Content="Открытые"/>
+                            <ComboBoxItem Content="Закрытые"/>
+                        </ComboBox>
+                    </StackPanel>
+                    <DataGrid x:Name="OrdersGrid" AutoGenerateColumns="False"
+                              IsReadOnly="True" CanUserAddRows="False" SelectionMode="Single">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="№"           Binding="{Binding Id}"           Width="50"/>
+                            <DataGridTextColumn Header="Клиент"      Binding="{Binding ClientName}"    Width="*"/>
+                            <DataGridTextColumn Header="Дата заказа" Binding="{Binding CreatedAt, StringFormat=dd.MM.yyyy}" Width="110"/>
+                            <DataGridTextColumn Header="Дата выдачи" Binding="{Binding DeliveryDate, StringFormat=dd.MM.yyyy}" Width="110"/>
+                            <DataGridTextColumn Header="Оплата"      Binding="{Binding PaymentName}"   Width="130"/>
+                            <DataGridTextColumn Header="Статус"      Binding="{Binding Status}"        Width="100"/>
+                            <DataGridTextColumn Header="Сумма"       Binding="{Binding Total, StringFormat='{}{0:N2} ₽'}" Width="100"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </DockPanel>
+            </TabItem>
+
+            <TabItem Header="Товары">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="300"/>
+                    </Grid.ColumnDefinitions>
+
+                    <DockPanel Grid.Column="0" Margin="8">
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 8">
+                            <Button Content="+ Добавить" Margin="0"
+                                    Click="AddProduct_Click"/>
+                            <Button Content="Изменить"
+                                    Click="EditProduct_Click"/>
+                            <Button x:Name="BtnFreeze" Content="Заморозить"
+                                    Click="ToggleFreezeProduct_Click"/>
+                            <TextBox x:Name="ProductSearch" Width="200" Margin="16 0 0 0"
+                                     TextChanged="ProductSearch_Changed"/>
+                        </StackPanel>
+                        <DataGrid x:Name="ProductsGrid" AutoGenerateColumns="False"
+                                  IsReadOnly="True" CanUserAddRows="False" SelectionMode="Single"
+                                  SelectionChanged="ProductsGrid_SelectionChanged">
+                            <DataGrid.RowStyle>
+                                <Style TargetType="DataGridRow">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsFreezed}" Value="True">
+                                            <Setter Property="Foreground" Value="#9CA3AF"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </DataGrid.RowStyle>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Название"      Binding="{Binding Name}"       Width="*"/>
+                                <DataGridTextColumn Header="Цена"          Binding="{Binding Price, StringFormat='{}{0:N2} ₽'}" Width="90"/>
+                                <DataGridTextColumn Header="Скидка %"      Binding="{Binding Sale}"       Width="70"/>
+                                <DataGridTextColumn Header="Тип"           Binding="{Binding TypeName}"   Width="110"/>
+                                <DataGridTextColumn Header="Производитель" Binding="{Binding ManufName}"  Width="130"/>
+                                <DataGridTextColumn Header="Рейтинг"       Binding="{Binding Rate}"       Width="70"/>
+                                <DataGridTextColumn Header="Статус"        Binding="{Binding FreezeText}" Width="90"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+
+                    <Border Grid.Column="1" BorderBrush="#E5E7EB" BorderThickness="1 0 0 0" Padding="12">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <StackPanel x:Name="ProductEditPanel" Visibility="Collapsed">
+                                <TextBlock x:Name="ProductEditTitle" FontWeight="SemiBold" FontSize="14" Margin="0 0 0 12"/>
+                                <TextBlock Text="Название *"/>
+                                <TextBox x:Name="ProdName" Margin="0 2 0 0"/>
+                                <TextBlock Text="Цена *"/>
+                                <TextBox x:Name="ProdPrice" Margin="0 2 0 0"/>
+                                <TextBlock Text="Скидка %"/>
+                                <TextBox x:Name="ProdSale" Text="0" Margin="0 2 0 0"/>
+                                <TextBlock Text="Описание"/>
+                                <TextBox x:Name="ProdDescription" AcceptsReturn="True"
+                                         TextWrapping="Wrap" Height="60" Margin="0 2 0 0"/>
+                                <TextBlock Text="Тип товара"/>
+                                <ComboBox x:Name="ProdTypeCombo" DisplayMemberPath="Name"
+                                          SelectedValuePath="Id" Margin="0 2 0 0"/>
+                                <TextBlock Text="Производитель"/>
+                                <ComboBox x:Name="ProdManufCombo" DisplayMemberPath="Name"
+                                          SelectedValuePath="Id" Margin="0 2 0 12"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Content="Сохранить" Margin="0"
+                                            Click="SaveProduct_Click"/>
+                                    <Button Content="Отмена"
+                                            Click="CloseProductPanel_Click"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Производители">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="280"/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel Grid.Column="0" Margin="8">
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 8">
+                            <Button Content="+ Добавить" Margin="0"
+                                    Click="AddManufacturer_Click"/>
+                            <Button Content="Изменить"
+                                    Click="EditManufacturer_Click"/>
+                        </StackPanel>
+                        <DataGrid x:Name="ManufacturersGrid" AutoGenerateColumns="False"
+                                  IsReadOnly="True" CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+                    <Border Grid.Column="1" BorderBrush="#E5E7EB" BorderThickness="1 0 0 0" Padding="12">
+                        <StackPanel x:Name="ManufEditPanel" Visibility="Collapsed">
+                            <TextBlock x:Name="ManufEditTitle" FontWeight="SemiBold" FontSize="14" Margin="0 0 0 12"/>
+                            <TextBlock Text="Название *"/>
+                            <TextBox x:Name="ManufNameBox" Margin="0 2 0 12"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Сохранить" Margin="0"
+                                        Click="SaveManufacturer_Click"/>
+                                <Button Content="Отмена"
+                                        Click="CloseManufPanel_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Типы товаров">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="280"/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel Grid.Column="0" Margin="8">
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 8">
+                            <Button Content="+ Добавить" Margin="0"
+                                    Click="AddProductType_Click"/>
+                            <Button Content="Изменить"
+                                    Click="EditProductType_Click"/>
+                        </StackPanel>
+                        <DataGrid x:Name="ProductTypesGrid" AutoGenerateColumns="False"
+                                  IsReadOnly="True" CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+                    <Border Grid.Column="1" BorderBrush="#E5E7EB" BorderThickness="1 0 0 0" Padding="12">
+                        <StackPanel x:Name="ProdTypeEditPanel" Visibility="Collapsed">
+                            <TextBlock x:Name="ProdTypeEditTitle" FontWeight="SemiBold" FontSize="14" Margin="0 0 0 12"/>
+                            <TextBlock Text="Название *"/>
+                            <TextBox x:Name="ProdTypeNameBox" Margin="0 2 0 12"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Сохранить" Margin="0"
+                                        Click="SaveProductType_Click"/>
+                                <Button Content="Отмена"
+                                        Click="CloseProdTypePanel_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Услуги">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="280"/>
+                    </Grid.ColumnDefinitions>
+                    <DockPanel Grid.Column="0" Margin="8">
+                        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0 0 0 8">
+                            <Button Content="+ Добавить" Margin="0"
+                                    Click="AddService_Click"/>
+                            <Button Content="Изменить"
+                                    Click="EditService_Click"/>
+                        </StackPanel>
+                        <DataGrid x:Name="ServicesGrid" AutoGenerateColumns="False"
+                                  IsReadOnly="True" CanUserAddRows="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </DockPanel>
+                    <Border Grid.Column="1" BorderBrush="#E5E7EB" BorderThickness="1 0 0 0" Padding="12">
+                        <StackPanel x:Name="ServiceEditPanel" Visibility="Collapsed">
+                            <TextBlock x:Name="ServiceEditTitle" FontWeight="SemiBold" FontSize="14" Margin="0 0 0 12"/>
+                            <TextBlock Text="Название *"/>
+                            <TextBox x:Name="ServiceNameBox" Margin="0 2 0 12"/>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Content="Сохранить" Margin="0"
+                                        Click="SaveService_Click"/>
+                                <Button Content="Отмена"
+                                        Click="CloseServicePanel_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Page>

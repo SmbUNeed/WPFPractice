@@ -6,7 +6,52 @@
         xmlns:local="clr-namespace:MyProject.Windows"
         mc:Ignorable="d"
         Title="CreateAppointmentWindow" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Новая запись" FontSize="16" FontWeight="SemiBold" Margin="0 0 0 8"/>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBlock Text="Поиск клиента (имя или телефон) *"/>
+                <DockPanel>
+                    <Button Content="Найти" DockPanel.Dock="Right" Padding="10 4" Margin="6 0 0 0"
+                            Click="SearchClient_Click"/>
+                    <TextBox x:Name="ClientSearch"/>
+                </DockPanel>
+                <ListBox x:Name="ClientResults" MaxHeight="90" Margin="0 4 0 0"
+                         DisplayMemberPath="Fullname"
+                         SelectionChanged="ClientResults_SelectionChanged"
+                         Visibility="Collapsed"/>
+                <TextBlock x:Name="SelectedClientLabel" Foreground="#3B82F6" FontStyle="Italic" Margin="0 4 0 0"/>
+
+                <TextBlock Text="Мастер *"/>
+                <ComboBox x:Name="MasterCombo" DisplayMemberPath="Fullname"
+                          SelectedValuePath="Id"
+                          SelectionChanged="MasterCombo_Changed"/>
+
+                <TextBlock Text="Услуга *"/>
+                <ComboBox x:Name="ServiceCombo" DisplayMemberPath="Name" SelectedValuePath="Id"/>
+
+                <TextBlock Text="Дата *"/>
+                <DatePicker x:Name="AppDate" SelectedDateChanged="AppDate_Changed"/>
+
+                <TextBlock Text="Время *"/>
+                <ComboBox x:Name="TimeCombo"/>
+
+                <TextBlock Text="Способ оплаты *"/>
+                <ComboBox x:Name="PaymentCombo" DisplayMemberPath="Name" SelectedValuePath="Id"/>
+            </StackPanel>
+        </ScrollViewer>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 12 0 0">
+            <Button Content="Записать" Background="#3B82F6" Foreground="White"
+                    BorderThickness="0" Padding="14 6" Click="Confirm_Click"/>
+            <Button Content="Отмена" Padding="14 6" Margin="8 0 0 0" Click="Cancel_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

@@ -82,7 +82,7 @@
           <Property Name="Rate" Type="decimal" Precision="2" Scale="1" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Sale" Type="decimal" Precision="3" Scale="2" />
-          <Property Name="IsFreezed" Type="binary" MaxLength="1" />
+          <Property Name="IsFreezed" Type="bit" Nullable="false" />
           <Property Name="ImagePath" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductTypes">
@@ -135,7 +135,7 @@
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="IsFreezed" Type="bit" />
+          <Property Name="IsFreezed" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_Appointments_PaymentMethods">
           <End Role="PaymentMethods" Type="Self.PaymentMethods" Multiplicity="0..1" />
@@ -497,7 +497,7 @@
           <Property Name="Rate" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Sale" Type="Decimal" Precision="3" Scale="2" />
-          <Property Name="IsFreezed" Type="Binary" MaxLength="1" FixedLength="true" />
+          <Property Name="IsFreezed" Type="Boolean" Nullable="false" />
           <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Cart" Relationship="Self.FK_Cart_Products" FromRole="Products" ToRole="Cart" />
           <NavigationProperty Name="Manufacturers" Relationship="Self.FK_Products_Manufacturers" FromRole="Products" ToRole="Manufacturers" />
@@ -560,7 +560,7 @@
           <Property Name="RoleId" Type="Int32" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IsFreezed" Type="Boolean" />
+          <Property Name="IsFreezed" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointments_Users2" FromRole="Users" ToRole="Appointments" />
           <NavigationProperty Name="Appointments1" Relationship="Self.FK_Appointments_Users3" FromRole="Users" ToRole="Appointments" />
           <NavigationProperty Name="Cart" Relationship="Self.FK_Cart_Users" FromRole="Users" ToRole="Cart" />
