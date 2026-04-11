@@ -69,14 +69,18 @@ namespace MyProject.Pages
 
         private void ListBoxMasters_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (e.AddedItems.Count == 0) { return; }
             Users master = ((KeyValuePair <Users, List <Services>>)e.AddedItems[0]).Key;
             NavigationService.Navigate(new AppointmentsPage(master));
+            ListBoxMasters.SelectedItem = null;
         }
 
         private void ListBoxServices_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (e.AddedItems.Count == 0) { return; }
             Services service = (Services)e.AddedItems[0];
             NavigationService.Navigate(new AppointmentsPage(service));
+            ListBoxServices.SelectedItem = null;
         }
 
         private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -135,6 +135,7 @@
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsFreezed" Type="bit" />
         </EntityType>
         <Association Name="FK_Appointments_PaymentMethods">
           <End Role="PaymentMethods" Type="Self.PaymentMethods" Multiplicity="0..1" />
@@ -559,6 +560,7 @@
           <Property Name="RoleId" Type="Int32" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsFreezed" Type="Boolean" />
           <NavigationProperty Name="Appointments" Relationship="Self.FK_Appointments_Users2" FromRole="Users" ToRole="Appointments" />
           <NavigationProperty Name="Appointments1" Relationship="Self.FK_Appointments_Users3" FromRole="Users" ToRole="Appointments" />
           <NavigationProperty Name="Cart" Relationship="Self.FK_Cart_Users" FromRole="Users" ToRole="Cart" />
@@ -950,6 +952,7 @@
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IsFreezed" ColumnName="IsFreezed" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

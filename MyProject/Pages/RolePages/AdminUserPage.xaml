@@ -1,0 +1,52 @@
+﻿<Page x:Class="MyProject.Pages.RolePages.AdminUserPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MyProject.Pages.RolePages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AdminUserPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.7*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Column="1" x:Name="UserNameTextBlock" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontSize="20"/>
+        <StackPanel Grid.Column="1" Grid.Row="1" Width="200">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Роль:" Width="120"/>
+                <ComboBox x:Name="RolesCombobox" Width="100" Height="18">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Электронная почта" Width="120"/>
+                <TextBox x:Name="EmailBox" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Номер телефона" Width="120"/>
+                <TextBox x:Name="PhoneNumberBox" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Логин" Width="120"/>
+                <TextBox x:Name="LoginBox" Width="100"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <Button x:Name="SaveButton" Content="Сохранить" HorizontalAlignment="Center" Click="SaveButton_Click" Width="80"/>
+                <Button x:Name="FreezeButton" HorizontalAlignment="Center" Click="FreezeButton_Click" Width="80" Margin="40,0,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

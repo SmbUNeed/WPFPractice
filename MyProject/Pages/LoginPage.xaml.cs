@@ -29,6 +29,7 @@ namespace MyProject.Pages
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             if (Auth.Authorize(LoginBox.Text, PasswordBox.Text)) NavigationService.Navigate(new MainPage());
+            else MessageBox.Show("Неверный логин или пароль");
         }
 
         private void RegisterButton_Click(object sender, RoutedEventArgs e)

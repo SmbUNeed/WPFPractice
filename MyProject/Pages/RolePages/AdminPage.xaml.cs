@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyProject.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,19 @@ namespace MyProject.Pages
         public AdminPage()
         {
             InitializeComponent();
+            UsersList.ItemsSource = Core.Context.Users.ToList();
+        }
+
+        private void UsersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (UsersList.SelectedItem == null) return;
+            NavigationService.Navigate(new RolePages.AdminUserPage(UsersList.SelectedItem as Users));
+            UsersList.SelectedItem = null;
+        }
+
+        private void NewUserButton_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RolePages.NewUserPage());
         }
     }
 }

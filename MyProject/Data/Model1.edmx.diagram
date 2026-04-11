@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="74a2fb71f6f34d85bbff0bcfa3b1c330" Name="Diagram1">
+      <Diagram DiagramId="6cb40ddeaf0441c8acc6578e116e9e0c" Name="Diagram1">
         <EntityTypeShape EntityType="CosmeticsLogeModel.Appointments" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CosmeticsLogeModel.Cart" Width="1.5" PointX="11.25" PointY="6.625" IsExpanded="true" />
         <EntityTypeShape EntityType="CosmeticsLogeModel.Manufacturers" Width="1.5" PointX="6" PointY="10.625" IsExpanded="true" />
@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="CosmeticsLogeModel.RolesPermissions" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CosmeticsLogeModel.Services" Width="1.5" PointX="3.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CosmeticsLogeModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CosmeticsLogeModel.Users" Width="1.5" PointX="6" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CosmeticsLogeModel.Users" Width="1.5" PointX="6" PointY="5.75" IsExpanded="true" />
         <AssociationConnector Association="CosmeticsLogeModel.FK_Appointments_PaymentMethods" ManuallyRouted="false" />
         <AssociationConnector Association="CosmeticsLogeModel.FK_Appointments_Services" ManuallyRouted="false" />
         <AssociationConnector Association="CosmeticsLogeModel.FK_Appointments_Users2" ManuallyRouted="false" />

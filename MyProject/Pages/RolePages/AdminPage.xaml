@@ -9,6 +9,15 @@
       Title="AdminPage">
 
     <Grid>
-        
+        <ListView Grid.Row="1" Width="380" x:Name="UsersList" Margin="10" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="UsersList_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="40"/>
+                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Fullname}" Width="180"/>
+                    <GridViewColumn Header="Роль" DisplayMemberBinding="{Binding Roles.Name}" Width="160"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="+" VerticalAlignment="Top" HorizontalAlignment="Right" Click="NewUserButton_Click"/>
     </Grid>
 </Page>

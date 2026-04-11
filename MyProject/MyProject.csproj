@@ -71,7 +71,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\RolePages\AdminUserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\RolePages\MasterAppointmentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RolePages\NewUserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\CreateAppointmentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,6 +177,9 @@
     <Compile Include="Pages\RolePages\AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RolePages\AdminUserPage.xaml.cs">
+      <DependentUpon>AdminUserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\RolePages\CabinetPage.xaml.cs">
       <DependentUpon>CabinetPage.xaml</DependentUpon>
     </Compile>
@@ -186,8 +201,14 @@
     <Compile Include="Pages\ProductsPage.xaml.cs">
       <DependentUpon>ProductsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\RolePages\NewUserPage.xaml.cs">
+      <DependentUpon>NewUserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Service\CartService.cs" />
     <Compile Include="ViewModels\ProductCartViewModel.cs" />
+    <Compile Include="Windows\CreateAppointmentWindow.xaml.cs">
+      <DependentUpon>CreateAppointmentWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\FilterModal.xaml.cs">
       <DependentUpon>FilterModal.xaml</DependentUpon>
     </Compile>
@@ -281,6 +302,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Images\Products\" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Data\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -291,9 +315,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\Products\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
