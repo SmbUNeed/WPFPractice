@@ -28,6 +28,7 @@ namespace MyProject.ViewModels
         public ProductCartViewModel(Products product)
         {
             Product = product;
+            if (Product.Sale != null) Product.Price = decimal.Round(Product.Price * (100 - (decimal)Product.Sale) / 100, 2);
             _cart.CartChanged += () =>
             {
                 OnPropertyChanged(nameof(Quantity));

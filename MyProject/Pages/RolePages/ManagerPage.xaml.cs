@@ -213,7 +213,7 @@ namespace MyProject.Pages
             if (filter == "Открытые") rows = rows.Where(o => o.Status != "Закрыт");
             else if (filter == "Закрытые") rows = rows.Where(o => o.Status == "Закрыт");
 
-            if (rows.Count() == 0) return;
+            if (OrdersGrid == null) return;
             OrdersGrid.ItemsSource = rows.ToList();
         }
 

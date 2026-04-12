@@ -34,7 +34,7 @@ namespace MyProject.Pages
         }
 
         List<ProductCartViewModel> GetViewModels(IEnumerable<Products> products) =>
-    products.Select(p => new ProductCartViewModel(p)).ToList();
+    products.Where(p => !p.IsFreezed).Select(p => new ProductCartViewModel(p)).ToList();
 
         private void FilterButton_Click(object sender, RoutedEventArgs e)
         {

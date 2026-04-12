@@ -24,6 +24,7 @@ namespace MyProject.Pages
         public ProductInfoPage(ProductCartViewModel productVM)
         {
             InitializeComponent();
+            DataContext = productVM;
         }
     }
 }

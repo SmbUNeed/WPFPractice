@@ -20,6 +20,7 @@ namespace MyProject.Service
             if (!Auth.IsAuthenticated) return 0;
 
             return Core.Context.Cart
+                .AsNoTracking()
                 .FirstOrDefault(c => c.UserId == CurrentUserId && c.ProductId == productId)
                 ?.Quantity ?? 0;
         }

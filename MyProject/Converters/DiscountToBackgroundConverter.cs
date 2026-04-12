@@ -9,7 +9,7 @@ namespace MyProject.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is double discount && discount > 15)
+            if (value is decimal discount && discount > 15)
                 return new SolidColorBrush(Color.FromRgb(255, 220, 220));
 
             return new SolidColorBrush(Colors.White);

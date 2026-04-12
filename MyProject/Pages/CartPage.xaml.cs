@@ -27,6 +27,11 @@ namespace MyProject.Pages
         public CartPage()
         {
             InitializeComponent();
+            UpdateLists();
+        }
+
+        public void UpdateLists()
+        {
             ProductsListBox.ItemsSource = GetViewModels(GetFiltered());
         }
 
@@ -41,8 +46,10 @@ namespace MyProject.Pages
 
         private void ProductsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (e.AddedItems.Count == 0) return;
             ProductCartViewModel pcvm = e.AddedItems[0] as ProductCartViewModel;
             NavigationService.Navigate(new ProductInfoPage(pcvm));
+            ProductsListBox.SelectedItem = null;
         }
         private void OrderButton_Click(object sender, RoutedEventArgs e)
         {

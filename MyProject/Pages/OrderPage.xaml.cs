@@ -30,7 +30,7 @@ namespace MyProject.Pages
 
         private void FillValues()
         {
-            PaymentMethodCombobox.ItemsSource = Core.Context.PaymentMethods;
+            PaymentMethodCombobox.ItemsSource = Core.Context.PaymentMethods.ToList();
             DateFilter.BlackoutDates.Add(new CalendarDateRange(DateTime.MinValue, DateTime.Today.AddDays(-1)));
             DateFilter.BlackoutDates.Add(new CalendarDateRange(DateTime.Today.AddDays(7), DateTime.MaxValue));
         }
@@ -40,8 +40,8 @@ namespace MyProject.Pages
             PaymentMethods pm = PaymentMethodCombobox.SelectedItem as PaymentMethods;
             DateTime? date = DateFilter.SelectedDate;
 
-            if (VisualModal.MessageIfFalse(pm == null, "Выберите способ оплаты") &&
-                VisualModal.MessageIfFalse(date == null, "Выберите корректную дату")
+            if (VisualModal.MessageIfFalse(pm != null, "Выберите способ оплаты") &&
+                VisualModal.MessageIfFalse(date != null, "Выберите корректную дату")
                 )
             {
                 try
@@ -63,16 +63,18 @@ namespace MyProject.Pages
                             Quantity = c.Quantity
                         };
                         Core.Context.OrdersProducts.Add(op);
+                        Core.Context.Cart.Remove(cart.First(cr => cr.UserId == Auth.CurrentUser.Id && cr.ProductId == c.ProductId));
                     }
                     Core.Context.Orders.Add(order);
                     Core.Context.SaveChanges();
+                    MessageBox.Show("Заказ принят!");
+                    NavigationService.Navigate(Access.HomePage());
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
-            NavigationService.Navigate(Access.HomePage());
         }
     }
 }

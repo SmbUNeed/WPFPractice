@@ -29,7 +29,7 @@ namespace MyProject.Data
         public decimal Rate { get; set; }
         public decimal Price { get; set; }
         public Nullable<decimal> Sale { get; set; }
-        public bool IsFreezed { get; set; } = false;
+        public bool IsFreezed { get; set; }
         public string ImagePath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

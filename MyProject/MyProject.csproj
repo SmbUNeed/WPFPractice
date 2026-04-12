@@ -302,9 +302,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Images\Products\" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Data\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -315,6 +312,13 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Products\Smooth_heels.png" />
+    <Resource Include="Images\Products\3in1.png" />
+    <Resource Include="Images\Products\Dolce_milk.png" />
+    <Resource Include="Images\Products\Nivea_cream.png" />
+    <Resource Include="Images\Products\Shampoo_Joumaisynba.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
