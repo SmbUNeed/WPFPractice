@@ -18,7 +18,7 @@ namespace MyProject.Views
     /// <summary>
     /// Логика взаимодействия для ReadView.xaml
     /// </summary>
-    public partial class ReadView : Page
+    public partial class ReadView : UserControl
     {
         public ReadView()
         {

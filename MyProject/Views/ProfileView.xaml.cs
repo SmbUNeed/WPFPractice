@@ -18,7 +18,7 @@ namespace MyProject.Views
     /// <summary>
     /// Логика взаимодействия для ProfileView.xaml
     /// </summary>
-    public partial class ProfileView : Page
+    public partial class ProfileView : UserControl
     {
         public ProfileView()
         {

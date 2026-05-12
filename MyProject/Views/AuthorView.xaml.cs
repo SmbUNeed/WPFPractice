@@ -18,7 +18,7 @@ namespace MyProject.Views
     /// <summary>
     /// Логика взаимодействия для AuthorView.xaml
     /// </summary>
-    public partial class AuthorView : Page
+    public partial class AuthorView : UserControl
     {
         public AuthorView()
         {

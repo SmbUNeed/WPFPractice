@@ -1,14 +1,39 @@
-﻿<Page x:Class="MyProject.Views.LoginView"
+﻿<UserControl x:Class="MyProject.Views.LoginView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MyProject.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="LoginView">
+      d:DesignHeight="450" d:DesignWidth="800">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="Авторизация" FontSize="20" HorizontalAlignment="Center"/>
+            <TextBlock Text="Логин"/>
+            <TextBox Text="{Binding Login, UpdateSourceTrigger=PropertyChanged}"/>
+            <TextBlock Text="Пароль"/>
+            <PasswordBox x:Name="PasswordBox"/>
+            <Button Content="Нет аккаунта?"
+                HorizontalAlignment="Left"
+                Foreground="Blue"
+                Background="Transparent"
+                BorderThickness="0"
+                Cursor="Hand"
+                Command="{Binding ToRegisterCommand}"/>
+            <Button Content="Войти"
+                Command="{Binding LoginCommand}"
+                CommandParameter="{Binding ElementName=PasswordBox}"/>
+        </StackPanel>
     </Grid>
-</Page>
+</UserControl>

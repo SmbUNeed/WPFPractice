@@ -8,5 +8,6 @@ namespace MyProject.Database
 {
     public static class Core
     {
+        public static UP_ShutIKrolEntities Context = new UP_ShutIKrolEntities();
     }
 }

@@ -7,11 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MyProject.Core
+namespace MyProject.Core_
 {
-    internal class ApplicationViewModel : INotifyPropertyChanged
+    internal class ApplicationViewModel : BaseViewModel
     {
-        public static bool IsLoggedIn { get; set; } = false;
         private object _currentView;
         public object CurrentView
         {
@@ -22,20 +21,17 @@ namespace MyProject.Core
         public ICommand NavigateCommand { get; }
         public ApplicationViewModel()
         {
+            NavigationService.Navigate = view => CurrentView = view;
             NavigateCommand = new RelayCommand(_ => Navigate());
             Navigate();
         }
 
         private void Navigate()
         {
-            if (!IsLoggedIn)
+            if (!SessionService.LoggedIn)
                 CurrentView = new ViewModels.LoginViewModel();
             else
                 CurrentView = new ViewModels.HomeViewModel();
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string name = null)
-            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }

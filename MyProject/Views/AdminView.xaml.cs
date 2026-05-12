@@ -18,7 +18,7 @@ namespace MyProject.Views
     /// <summary>
     /// Логика взаимодействия для AdminView.xaml
     /// </summary>
-    public partial class AdminView : Page
+    public partial class AdminView : UserControl
     {
         public AdminView()
         {

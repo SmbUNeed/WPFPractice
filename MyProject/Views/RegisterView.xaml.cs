@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyProject.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,11 +19,17 @@ namespace MyProject.Views
     /// <summary>
     /// Логика взаимодействия для RegisterView.xaml
     /// </summary>
-    public partial class RegisterView : Page
+    public partial class RegisterView : UserControl
     {
         public RegisterView()
         {
             InitializeComponent();
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = DataContext as RegisterViewModel;
+            vm.DoRegister(PasswordBox.Password, RepeatPasswordBox.Password);
         }
     }
 }
