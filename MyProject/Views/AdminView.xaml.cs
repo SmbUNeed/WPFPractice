@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyProject.Pages
+namespace MyProject.Views
 {
     /// <summary>
-    /// Логика взаимодействия для AdminPage.xaml
+    /// Логика взаимодействия для AdminView.xaml
     /// </summary>
-    public partial class AdminPage : Page
+    public partial class AdminView : Page
     {
-        public AdminPage()
+        public AdminView()
         {
             InitializeComponent();
         }

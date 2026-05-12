@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyProject.Pages
+namespace MyProject.Views
 {
     /// <summary>
-    /// Логика взаимодействия для ProfilePage.xaml
+    /// Логика взаимодействия для HomeView.xaml
     /// </summary>
-    public partial class ProfilePage : Page
+    public partial class HomeView : Page
     {
-        public ProfilePage()
+        public HomeView()
         {
             InitializeComponent();
         }

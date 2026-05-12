@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MyProject.Pages
+namespace MyProject.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainPage.xaml
+    /// Логика взаимодействия для AuthorView.xaml
     /// </summary>
-    public partial class MainPage : Page
+    public partial class AuthorView : Page
     {
-        public MainPage()
+        public AuthorView()
         {
             InitializeComponent();
         }
