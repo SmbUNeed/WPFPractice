@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace MyProject.ViewModels
 {
-    internal class RegisterViewModel : BaseViewModel
+    public class RegisterViewModel : BaseViewModel
     {
         private string _login;
         private string _name;

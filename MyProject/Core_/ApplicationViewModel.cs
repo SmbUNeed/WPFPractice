@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace MyProject.Core_
 {
-    internal class ApplicationViewModel : BaseViewModel
+    public class ApplicationViewModel : BaseViewModel
     {
         private object _currentView;
         public object CurrentView

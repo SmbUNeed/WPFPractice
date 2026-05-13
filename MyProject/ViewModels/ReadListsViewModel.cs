@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyProject.ViewModels
 {
-    public class ReadViewModel : BaseViewModel
+    public class ReadListsViewModel : BaseViewModel
     {
     }
 }

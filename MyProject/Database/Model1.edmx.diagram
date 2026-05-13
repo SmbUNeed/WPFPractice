@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="541d052a4a9945b68281342a7101863e" Name="Diagram1" ZoomLevel="60">
+      <Diagram DiagramId="541d052a4a9945b68281342a7101863e" Name="Diagram1" ZoomLevel="79">
         <EntityTypeShape EntityType="UP_ShutIKrolModel.Books" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="UP_ShutIKrolModel.Chapters" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="UP_ShutIKrolModel.Complaints" Width="1.5" PointX="10.5" PointY="9.25" IsExpanded="true" />

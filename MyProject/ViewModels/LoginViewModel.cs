@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace MyProject.ViewModels
 {
-    internal class LoginViewModel : BaseViewModel
+    public class LoginViewModel : BaseViewModel
     {
         private string _login;
         private string _password;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyProject.Core_
 {
-    internal class NavigationService
+    public class NavigationService
     {
         public static Action<object> Navigate { get; set; }
     }
