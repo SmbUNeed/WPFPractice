@@ -31,7 +31,8 @@ namespace MyProject.Database
         public string Email { get; set; }
         public int RoleId { get; set; }
         public bool IsFrozen { get; set; }
-        public System.DateTime RegistationDate { get; set; }
+        public string FreezeReason { get; set; }
+        public System.DateTime RegistrationDate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Books> Books { get; set; }

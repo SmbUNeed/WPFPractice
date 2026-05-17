@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyProject.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace MyProject.Core_
         public ICommand NavigateCommand { get; }
         public ApplicationViewModel()
         {
-            NavigationService.Navigate = view => CurrentView = view;
+            NavigationService.NavigationChanged += vm => CurrentView = vm;
             NavigateCommand = new RelayCommand(_ => Navigate());
             Navigate();
         }
@@ -29,9 +30,11 @@ namespace MyProject.Core_
         private void Navigate()
         {
             if (!SessionService.LoggedIn)
-                CurrentView = new ViewModels.LoginViewModel();
+                CurrentView = new LoginViewModel();
             else
-                CurrentView = new ViewModels.HomeViewModel();
+            {
+                CurrentView = new HomeViewModel();
+            }
         }
     }
 }

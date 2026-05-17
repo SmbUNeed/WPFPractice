@@ -16,9 +16,11 @@ namespace MyProject.Database
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        public Nullable<int> AuthorId { get; set; }
         public Nullable<int> BookId { get; set; }
         public Nullable<int> ReviewId { get; set; }
         public string ReasonText { get; set; }
+        public Nullable<bool> IsResolved { get; set; }
     
         public virtual Books Books { get; set; }
         public virtual Reviews Reviews { get; set; }

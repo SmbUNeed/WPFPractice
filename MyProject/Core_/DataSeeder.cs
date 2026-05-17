@@ -1,7 +1,6 @@
 ﻿using MyProject.Database;
 using System;
-using System.IO;
-using MyProject.Database;
+using System.IO;    
 using System.Linq;
 
 public static class DataSeeder

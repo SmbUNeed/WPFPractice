@@ -18,6 +18,7 @@ namespace MyProject.Database
         public int TypeId { get; set; }
         public int UserId { get; set; }
         public string Comment { get; set; }
+        public Nullable<bool> IsApproved { get; set; }
     
         public virtual RequestTypes RequestTypes { get; set; }
         public virtual Users Users { get; set; }

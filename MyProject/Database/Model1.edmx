@@ -19,7 +19,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="CoverPath" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CoverPath" Type="nvarchar(max)" Nullable="false" />
           <Property Name="AuthorId" Type="int" Nullable="false" />
           <Property Name="IsFrozen" Type="bit" Nullable="false" />
         </EntityType>
@@ -31,7 +31,7 @@
           <Property Name="BookId" Type="int" Nullable="false" />
           <Property Name="Number" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Path" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Path" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Complaints">
           <Key>
@@ -39,9 +39,11 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="AuthorId" Type="int" />
           <Property Name="BookId" Type="int" />
           <Property Name="ReviewId" Type="int" />
           <Property Name="ReasonText" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsResolved" Type="bit" />
         </EntityType>
         <EntityType Name="Genres">
           <Key>
@@ -75,6 +77,7 @@
           <Property Name="TypeId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Comment" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" />
         </EntityType>
         <EntityType Name="RequestTypes">
           <Key>
@@ -92,7 +95,8 @@
           <Property Name="BookId" Type="int" Nullable="false" />
           <Property Name="Text" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Rate" Type="tinyint" Nullable="false" />
-          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="IsFrozen" Type="bit" />
         </EntityType>
         <EntityType Name="Roles">
           <Key>
@@ -122,7 +126,8 @@
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="IsFrozen" Type="bit" Nullable="false" />
-          <Property Name="RegistationDate" Type="datetime" Nullable="false" />
+          <Property Name="FreezeReason" Type="nvarchar" MaxLength="500" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="FK_BookGenres_Books">
           <End Role="Books" Type="Self.Books" Multiplicity="1" />
@@ -390,7 +395,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CoverPath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CoverPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AuthorId" Type="Int32" Nullable="false" />
           <Property Name="IsFrozen" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Books_Users" FromRole="Books" ToRole="Users" />
@@ -408,7 +413,7 @@
           <Property Name="BookId" Type="Int32" Nullable="false" />
           <Property Name="Number" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Path" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Chapters_Books" FromRole="Chapters" ToRole="Books" />
         </EntityType>
         <EntityType Name="Complaints">
@@ -417,9 +422,11 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="AuthorId" Type="Int32" />
           <Property Name="BookId" Type="Int32" />
           <Property Name="ReviewId" Type="Int32" />
           <Property Name="ReasonText" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsResolved" Type="Boolean" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Complaints_Books1" FromRole="Complaints" ToRole="Books" />
           <NavigationProperty Name="Reviews" Relationship="Self.FK_Complaints_Reviews" FromRole="Complaints" ToRole="Reviews" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Complaints_Users" FromRole="Complaints" ToRole="Users" />
@@ -461,6 +468,7 @@
           <Property Name="TypeId" Type="Int32" Nullable="false" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsApproved" Type="Boolean" />
           <NavigationProperty Name="RequestTypes" Relationship="Self.FK_Requests_RequestTypes" FromRole="Requests" ToRole="RequestTypes" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Requests_Users" FromRole="Requests" ToRole="Users" />
         </EntityType>
@@ -481,7 +489,8 @@
           <Property Name="BookId" Type="Int32" Nullable="false" />
           <Property Name="Text" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Rate" Type="Byte" Nullable="false" />
-          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsFrozen" Type="Boolean" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Reviews_Books" FromRole="Reviews" ToRole="Books" />
           <NavigationProperty Name="Complaints" Relationship="Self.FK_Complaints_Reviews" FromRole="Reviews" ToRole="Complaints" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Reviews_Users" FromRole="Reviews" ToRole="Users" />
@@ -515,7 +524,8 @@
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="RoleId" Type="Int32" Nullable="false" />
           <Property Name="IsFrozen" Type="Boolean" Nullable="false" />
-          <Property Name="RegistationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FreezeReason" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Books" Relationship="Self.FK_Books_Users" FromRole="Users" ToRole="Books" />
           <NavigationProperty Name="Complaints" Relationship="Self.FK_Complaints_Users" FromRole="Users" ToRole="Complaints" />
           <NavigationProperty Name="ReadList" Relationship="Self.FK_ReadList_Users" FromRole="Users" ToRole="ReadList" />
@@ -786,9 +796,11 @@
               <MappingFragment StoreEntitySet="Complaints">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AuthorId" ColumnName="AuthorId" />
                 <ScalarProperty Name="BookId" ColumnName="BookId" />
                 <ScalarProperty Name="ReviewId" ColumnName="ReviewId" />
                 <ScalarProperty Name="ReasonText" ColumnName="ReasonText" />
+                <ScalarProperty Name="IsResolved" ColumnName="IsResolved" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -826,6 +838,7 @@
                 <ScalarProperty Name="TypeId" ColumnName="TypeId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -846,6 +859,7 @@
                 <ScalarProperty Name="Text" ColumnName="Text" />
                 <ScalarProperty Name="Rate" ColumnName="Rate" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="IsFrozen" ColumnName="IsFrozen" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -878,7 +892,8 @@
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="IsFrozen" ColumnName="IsFrozen" />
-                <ScalarProperty Name="RegistationDate" ColumnName="RegistationDate" />
+                <ScalarProperty Name="FreezeReason" ColumnName="FreezeReason" />
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

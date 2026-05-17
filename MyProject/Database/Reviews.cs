@@ -25,7 +25,8 @@ namespace MyProject.Database
         public int BookId { get; set; }
         public string Text { get; set; }
         public byte Rate { get; set; }
-        public Nullable<System.DateTime> CreationDate { get; set; }
+        public System.DateTime CreationDate { get; set; }
+        public Nullable<bool> IsFrozen { get; set; }
     
         public virtual Books Books { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -119,76 +119,102 @@
     <Compile Include="Database\Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\AddBookViewModel.cs" />
-    <Compile Include="ViewModels\AdminViewModel.cs" />
-    <Compile Include="ViewModels\AuthorBooksViewModel.cs" />
-    <Compile Include="ViewModels\AuthorViewModel.cs" />
-    <Compile Include="ViewModels\BookListsViewModel.cs" />
-    <Compile Include="ViewModels\BookViewModel.cs" />
-    <Compile Include="ViewModels\CatalogViewModel.cs" />
-    <Compile Include="ViewModels\ReadListsViewModel.cs" />
-    <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="ViewModels\ProfileViewModel.cs" />
-    <Compile Include="ViewModels\ReadViewModel.cs" />
-    <Compile Include="ViewModels\RegisterViewModel.cs" />
-    <Compile Include="Views\AddBookView.xaml.cs">
-      <DependentUpon>AddBookView.xaml</DependentUpon>
+    <Compile Include="ViewModels\Author\AddEditBookViewModel.cs" />
+    <Compile Include="ViewModels\Author\AddToReadListDialogViewModel.cs" />
+    <Compile Include="ViewModels\Admin\AdminViewModel.cs" />
+    <Compile Include="ViewModels\Author\AuthorBooksViewModel.cs" />
+    <Compile Include="ViewModels\Author\AuthorViewModel.cs" />
+    <Compile Include="ViewModels\User\BookListsViewModel.cs" />
+    <Compile Include="ViewModels\User\BookViewModel.cs" />
+    <Compile Include="ViewModels\User\CatalogViewModel.cs" />
+    <Compile Include="ViewModels\Author\ChapterEditViewModel.cs" />
+    <Compile Include="ViewModels\Author\FrozenAuthorBooksViewModel.cs" />
+    <Compile Include="ViewModels\Author\FrozenBookItemViewModel.cs" />
+    <Compile Include="ViewModels\Author\GenreCheckViewModel.cs" />
+    <Compile Include="ViewModels\User\HomeViewModel.cs" />
+    <Compile Include="ViewModels\User\LoginViewModel.cs" />
+    <Compile Include="ViewModels\User\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\User\ReadViewModel.cs" />
+    <Compile Include="ViewModels\User\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\User\ReviewViewModel.cs" />
+    <Compile Include="Views\Author\AddEditBookView.xaml.cs">
+      <DependentUpon>AddEditBookView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AdminView.xaml.cs">
+    <Compile Include="Views\User\AddToReadListDialog.xaml.cs">
+      <DependentUpon>AddToReadListDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\AdminView.xaml.cs">
       <DependentUpon>AdminView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AuthorBooksView.xaml.cs">
+    <Compile Include="Views\Author\AuthorBooksView.xaml.cs">
       <DependentUpon>AuthorBooksView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\AuthorView.xaml.cs">
+    <Compile Include="Views\Author\AuthorView.xaml.cs">
       <DependentUpon>AuthorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BookListsView.xaml.cs">
+    <Compile Include="Views\User\BookListsView.xaml.cs">
       <DependentUpon>BookListsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CatalogView.xaml.cs">
+    <Compile Include="Views\User\CatalogView.xaml.cs">
       <DependentUpon>CatalogView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProfileView.xaml.cs">
+    <Compile Include="Views\User\ComplaintDialog.xaml.cs">
+      <DependentUpon>ComplaintDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Author\FrozenAuthorBooksView.xaml.cs">
+      <DependentUpon>FrozenAuthorBooksView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\User\ProfileView.xaml.cs">
       <DependentUpon>ProfileView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\RegisterView.xaml.cs">
+    <Compile Include="Views\User\RegisterView.xaml.cs">
       <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\AddBookView.xaml">
+    <Page Include="Views\Author\AddEditBookView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AdminView.xaml">
+    <Page Include="Views\User\AddToReadListDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AuthorBooksView.xaml">
+    <Page Include="Views\Admin\AdminView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\AuthorView.xaml">
+    <Page Include="Views\Author\AuthorBooksView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BookListsView.xaml">
+    <Page Include="Views\Author\AuthorView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\BookView.xaml">
+    <Page Include="Views\User\BookListsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CatalogView.xaml">
+    <Page Include="Views\User\BookView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\HomeView.xaml">
+    <Page Include="Views\User\CatalogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LoginView.xaml">
+    <Page Include="Views\User\ComplaintDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Author\FrozenAuthorBooksView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\HomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\User\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,34 +228,34 @@
     </Compile>
     <Compile Include="Core_\ApplicationViewModel.cs" />
     <Compile Include="Core_\RelayCommand.cs" />
-    <Compile Include="Views\BookView.xaml.cs">
+    <Compile Include="Views\User\BookView.xaml.cs">
       <DependentUpon>BookView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\HomeView.xaml.cs">
+    <Compile Include="Views\User\HomeView.xaml.cs">
       <DependentUpon>HomeView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoginView.xaml.cs">
+    <Compile Include="Views\User\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\ProfileView.xaml">
+    <Page Include="Views\User\ProfileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ReadView.xaml">
+    <Page Include="Views\User\ReadView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\RegisterView.xaml">
+    <Page Include="Views\User\RegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Views\ReadView.xaml.cs">
+    <Compile Include="Views\User\ReadView.xaml.cs">
       <DependentUpon>ReadView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -271,10 +297,15 @@
     <Resource Include="Assets\author.png" />
     <Resource Include="Assets\catalog.png" />
     <Resource Include="Assets\readlists.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Database\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
       <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Database\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -282,11 +313,6 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Covers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
