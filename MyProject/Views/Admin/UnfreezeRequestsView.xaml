@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="MyProject.Views.UnfreezeRequestsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
+
+    <ScrollViewer>
+        <StackPanel Margin="15">
+            <TextBlock Text="Заявки на снятие заморозки" FontSize="18" FontWeight="Bold" Margin="0,0,0,12"/>
+            <ItemsControl ItemsSource="{Binding Requests}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="LightGray" BorderThickness="1"
+                                CornerRadius="4" Margin="0,5" Padding="12">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Grid.Column="0">
+                                    <TextBlock FontWeight="Bold"
+                                               Text="{Binding TypeLabel, StringFormat='Тип: {0}'}"/>
+                                    <TextBlock Text="{Binding FiledBy, StringFormat='Пользователь: {0}'}"
+                                               Foreground="Gray" Margin="0,2"/>
+                                    <TextBlock Text="{Binding Comment}" TextWrapping="Wrap" Margin="0,4,0,0"/>
+                                    <TextBlock Text="Рассмотрена" Foreground="Green" FontStyle="Italic"
+                                               Visibility="{Binding IsProcessed, Converter={StaticResource BoolToVis}}"/>
+                                </StackPanel>
+                                <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="12,0,0,0"
+                                            Visibility="{Binding IsActive, Converter={StaticResource BoolToVis}}">
+                                    <Button Content="✓ Принять" Command="{Binding AcceptCommand}"
+                                            Foreground="Green" Padding="10,4" Margin="0,0,0,6"/>
+                                    <Button Content="✕ Отклонить" Command="{Binding RejectCommand}"
+                                            Foreground="Red" Padding="10,4"/>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

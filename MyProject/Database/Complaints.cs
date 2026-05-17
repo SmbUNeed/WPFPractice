@@ -25,5 +25,6 @@ namespace MyProject.Database
         public virtual Books Books { get; set; }
         public virtual Reviews Reviews { get; set; }
         public virtual Users Users { get; set; }
+        public virtual Users Users1 { get; set; }
     }
 }

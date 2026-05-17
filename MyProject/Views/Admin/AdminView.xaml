@@ -1,12 +1,44 @@
 ﻿<UserControl x:Class="MyProject.Views.AdminView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MyProject.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:views="clr-namespace:MyProject.Views"
+      xmlns:vm="clr-namespace:MyProject.ViewModels"
+      mc:Ignorable="d" d:DesignHeight="600" d:DesignWidth="900">
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type vm:ComplaintsViewModel}">
+            <views:ComplaintsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:UnfreezeRequestsViewModel}">
+            <views:UnfreezeRequestsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:AuthorRequestsViewModel}">
+            <views:AuthorRequestsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:FrozenItemsViewModel}">
+            <views:FrozenItemsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:UsersAdminViewModel}">
+            <views:UsersAdminView/>
+        </DataTemplate>
+    </UserControl.Resources>
+
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="10,5">
+            <Button Content="Жалобы"           Command="{Binding OpenComplaintsCommand}"     Margin="0,0,6,0" Padding="10,4"/>
+            <Button Content="Снятие заморозки" Command="{Binding OpenUnfreezeCommand}"       Margin="0,0,6,0" Padding="10,4"/>
+            <Button Content="Роль автора"      Command="{Binding OpenAuthorRequestsCommand}" Margin="0,0,6,0" Padding="10,4"/>
+            <Button Content="Заморожено"       Command="{Binding OpenFrozenCommand}"         Margin="0,0,6,0" Padding="10,4"/>
+            <Button Content="Пользователи"     Command="{Binding OpenUsersCommand}"          Padding="10,4"/>
+        </StackPanel>
+
+        <ContentControl Grid.Row="1" Content="{Binding CurrentTab}"/>
     </Grid>
 </UserControl>

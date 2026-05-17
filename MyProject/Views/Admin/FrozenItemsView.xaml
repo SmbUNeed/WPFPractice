@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="MyProject.Views.FrozenItemsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d">
+
+    <ScrollViewer>
+        <StackPanel Margin="15">
+
+            <TextBlock Text="Замороженные пользователи" FontSize="16" FontWeight="Bold" Margin="0,0,0,8"/>
+            <ItemsControl ItemsSource="{Binding Users}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#FFC107" BorderThickness="1" CornerRadius="3"
+                                Margin="0,4" Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold" Text="{Binding Login}"/>
+                                    <TextBlock Text="{Binding Reason, StringFormat='Причина: {0}'}"
+                                               Foreground="Gray"/>
+                                </StackPanel>
+                                <Button Grid.Column="1" Content="Разморозить"
+                                        Command="{Binding UnfreezeCommand}"
+                                        VerticalAlignment="Center" Padding="10,4"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBlock Text="Замороженные книги" FontSize="16" FontWeight="Bold" Margin="0,16,0,8"/>
+            <ItemsControl ItemsSource="{Binding Books}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#FFC107" BorderThickness="1" CornerRadius="3"
+                                Margin="0,4" Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <TextBlock FontWeight="Bold" Text="{Binding Name}"/>
+                                    <TextBlock Text="{Binding AuthorName, StringFormat='Автор: {0}'}"
+                                               Foreground="Gray"/>
+                                </StackPanel>
+                                <Button Grid.Column="1" Content="Разморозить"
+                                        Command="{Binding UnfreezeCommand}"
+                                        VerticalAlignment="Center" Padding="10,4"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <TextBlock Text="Замороженные отзывы" FontSize="16" FontWeight="Bold" Margin="0,16,0,8"/>
+            <ItemsControl ItemsSource="{Binding Reviews}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="#FFC107" BorderThickness="1" CornerRadius="3"
+                                Margin="0,4" Padding="10">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock FontWeight="Bold" Text="{Binding UserLogin}"/>
+                                        <TextBlock Text=" → " Foreground="Gray"/>
+                                        <TextBlock Text="{Binding BookName}" Foreground="Gray"/>
+                                    </StackPanel>
+                                    <TextBlock Text="{Binding Text}" TextWrapping="Wrap"
+                                               Margin="0,4,0,0" MaxHeight="40"/>
+                                </StackPanel>
+                                <Button Grid.Column="1" Content="Разморозить"
+                                        Command="{Binding UnfreezeCommand}"
+                                        VerticalAlignment="Center" Padding="10,4"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

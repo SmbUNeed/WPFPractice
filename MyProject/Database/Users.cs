@@ -19,6 +19,7 @@ namespace MyProject.Database
         {
             this.Books = new HashSet<Books>();
             this.Complaints = new HashSet<Complaints>();
+            this.Complaints1 = new HashSet<Complaints>();
             this.ReadList = new HashSet<ReadList>();
             this.Requests = new HashSet<Requests>();
             this.Reviews = new HashSet<Reviews>();
@@ -38,6 +39,8 @@ namespace MyProject.Database
         public virtual ICollection<Books> Books { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Complaints> Complaints { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Complaints> Complaints1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReadList> ReadList { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

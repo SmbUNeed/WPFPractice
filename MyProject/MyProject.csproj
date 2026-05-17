@@ -119,6 +119,15 @@
     <Compile Include="Database\Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\Admin\AuthorRequestItemViewModel.cs" />
+    <Compile Include="ViewModels\Admin\AuthorRequestsViewModel.cs" />
+    <Compile Include="ViewModels\Admin\ComplaintItemViewModel.cs" />
+    <Compile Include="ViewModels\Admin\ComplaintsViewModel.cs" />
+    <Compile Include="ViewModels\Admin\FrozenItemsViewModel.cs" />
+    <Compile Include="ViewModels\Admin\UnfreezeRequestItemViewModel.cs" />
+    <Compile Include="ViewModels\Admin\UnfreezeRequestsViewModel.cs" />
+    <Compile Include="ViewModels\Admin\UserAdminItemViewModel.cs" />
+    <Compile Include="ViewModels\Admin\UsersAdminViewModel.cs" />
     <Compile Include="ViewModels\Author\AddEditBookViewModel.cs" />
     <Compile Include="ViewModels\Author\AddToReadListDialogViewModel.cs" />
     <Compile Include="ViewModels\Admin\AdminViewModel.cs" />
@@ -137,6 +146,21 @@
     <Compile Include="ViewModels\User\ReadViewModel.cs" />
     <Compile Include="ViewModels\User\RegisterViewModel.cs" />
     <Compile Include="ViewModels\User\ReviewViewModel.cs" />
+    <Compile Include="Views\Admin\AuthorRequestsView.xaml.cs">
+      <DependentUpon>AuthorRequestsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\ComplaintsView.xaml.cs">
+      <DependentUpon>ComplaintsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\FrozenItemsView.xaml.cs">
+      <DependentUpon>FrozenItemsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\UnfreezeRequestsView.xaml.cs">
+      <DependentUpon>UnfreezeRequestsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\UsersAdminView.xaml.cs">
+      <DependentUpon>UsersAdminView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Author\AddEditBookView.xaml.cs">
       <DependentUpon>AddEditBookView.xaml</DependentUpon>
     </Compile>
@@ -170,6 +194,26 @@
     <Compile Include="Views\User\RegisterView.xaml.cs">
       <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Admin\AuthorRequestsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\ComplaintsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\FrozenItemsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\UnfreezeRequestsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Admin\UsersAdminView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Author\AddEditBookView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -313,6 +357,5 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
