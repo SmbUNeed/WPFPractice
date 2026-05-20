@@ -54,7 +54,7 @@ namespace MyProject.ViewModels
             Chapters chapter = Core.Context.Chapters.First(c => c.BookId == _book.Id && c.Number == number);
             ChapterTitle = chapter.Name;
 
-            StreamReader sr = new StreamReader(Path.Combine("C:\\Users\\artom\\source\\repos\\SmbUNeed\\WPFPractice\\MyProject\\Assets", chapter.Path));
+            StreamReader sr = new StreamReader(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets\\chapters", _book.Id.ToString(), $"ch{_currentChapter}.txt"));
             ChapterText = sr.ReadToEnd();
             sr.Close();
 

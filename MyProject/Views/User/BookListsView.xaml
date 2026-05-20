@@ -37,7 +37,7 @@
                 <DataTemplate>
                     <Border Width="150" Height="275" Margin="8">
                         <StackPanel>
-                            <Image Source="{Binding CoverPath}" Width="142" Height="200"/>
+                            <Image Source="{Binding CoverPath, Converter={StaticResource FullPath}}" Width="142" Height="200"/>
                             <TextBlock Text="{Binding Name}"/>
                             <TextBlock Text="{Binding Users.Name}"/>
                             <Button Content="Открыть" Command="{Binding DataContext.OpenBookCommand, 

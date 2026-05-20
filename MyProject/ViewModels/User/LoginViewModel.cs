@@ -33,6 +33,9 @@ namespace MyProject.ViewModels
         {
             ToRegisterCommand = new RelayCommand(_ => NavigationService.Navigate(new RegisterViewModel()));
             LoginCommand = new RelayCommand(DoLogin);
+
+            string path = AppDomain.CurrentDomain.BaseDirectory;
+            Console.WriteLine(path);
         }
         private void DoLogin(object parameter)
         {

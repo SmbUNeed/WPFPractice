@@ -25,7 +25,7 @@
             </Grid.ColumnDefinitions>
 
             <Image Grid.Row="0" Grid.RowSpan="3" Grid.Column="0"
-                   Source="{Binding Cover}"
+                   Source="{Binding Cover, Converter={StaticResource FullPath}}"
                    Height="280" Width="180" Stretch="UniformToFill"
                    VerticalAlignment="Top" Margin="0,0,15,0"/>
 

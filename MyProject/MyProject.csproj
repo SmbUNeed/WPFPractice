@@ -64,6 +64,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Core_\BaseViewModel.cs" />
+    <Compile Include="Views\BookImagePathConverter.cs" />
     <Compile Include="Core_\DataSeeder.cs" />
     <Compile Include="Core_\NavigationService.cs" />
     <Compile Include="Core_\SessionService.cs" />
